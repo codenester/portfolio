@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react'
 import { LangContext, ThemeContext } from '../contexts'
 export default function Layout({ children }) {
     const [cookie, setCookie] = useCookies(["rithea-theme", "rithea-lang"])
-    const [theme, setTheme] = useState(cookie['rithea-theme'] ?? "dark")
+    const [theme, setTheme] = useState(cookie['rithea-theme'] ?? "light")
     const [lang, setLang] = useState(cookie['rithea-lang'] ?? 'en')
     useEffect(() => {
         const d = new Date();
         d.setDate(d.getDate() + 14)
         if (!cookie['rithea-theme']) {
-            setCookie("rithea-theme", "dark", {
+            setCookie("rithea-theme", "light", {
                 expires: d,
                 path: '/'
             })

@@ -23,20 +23,24 @@
   --light-bg: #fefefe;
   --dark-text: #eeeeee;
   --light-text: #222222;
-  --main-font: roboto, content, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  --title-font: montserrat, moul, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --main-font: roboto, content, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  --title-font: montserrat, moul, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
   --d-primary: rgb(15, 177, 177);
-  --l-primary: rgb(8, 148, 148);
-  --d-secondary:rgb(212, 22, 212);
-  --l-secondary:rgb(153, 10, 153);
-  --d-success:rgb(0, 189, 0);
-  --l-success:rgb(1, 129, 1);
-  --d-warning:rgb(255, 208, 0);
-  --l-warning:rgb(236, 154, 0);
-  --d-error:rgb(250, 32, 32);
-  --l-error:rgb(206, 11, 11);
+  --l-primary: rgb(7, 131, 131);
+  --d-alpha-primary: rgba(15, 177, 177, 0.05);
+  --l-alpha-primary: rgb(7, 131, 131, 0.05);
+  --d-secondary: rgb(212, 22, 212);
+  --l-secondary: rgb(153, 10, 153);
+  --d-success: rgb(0, 189, 0);
+  --l-success: rgb(1, 129, 1);
+  --d-warning: rgb(255, 208, 0);
+  --l-warning: rgb(236, 154, 0);
+  --d-error: rgb(250, 32, 32);
+  --l-error: rgb(206, 11, 11);
 }
 
 html,
@@ -77,36 +81,91 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.float-setting {
+.float-setting-wrap{
   position: fixed;
   top: 1rem;
   left: 100%;
-  gap: 10px;
   transform: translateX(calc(-100% - 1rem));
-  display: flex;
+}
+.float-btn{
+  position: absolute;
 }
 
+.float-setting {
+  min-height: 60px;
+  min-width: 160px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+}
+button.round{
+  border-radius: 6px;
+}
 button {
   cursor: pointer;
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 8px 12px;
   outline: none;
   font-family: inherit;
   font-size: inherit;
   border: none;
   transition: 0.15s;
 }
-.dark button, .dark button.primary{
+.dark button,
+.dark button.primary {
   color: #ffffff;
-  font-weight: 900;
   background-color: var(--d-primary);
 }
-button:hover,input:hover{
-  filter: brightness(105%);
+button.pure-text {
+  padding: 2px 4px;
 }
-button:focus, input:focus{
+.dark button.text,
+.dark button.pure-text,
+.light button.text,
+.light button.pure-text {
+  background-color: transparent;
+}
+.dark button.text,.dark button.pure-text{
+  color: var(--dark-text);
+}
+.light button.text, .light button.pure-text{
+  color: var(--light-text);
+}
+.dark button.primary.text,
+.dark button.primary.pure-text {
+  color: var(--d-primary);
+  background-color: transparent;
+}
+.light button,
+.light button.primary {
+  color: #eeeeee;
+  background-color: var(--l-primary);
+}
+.light button.primary.text,
+.light button.primary.pure-text {
+  color: var(--l-primary);
+  background-color: transparent;
+}
+.dark button.text:hover,
+.dark button.primary.text:hover {
+  background-color: var(--d-alpha-primary);
+}
+.light button.text:hover,
+.light button.primary.text:hover {
+  background-color: var(--l-alpha-primary);
+}
+button:hover,
+input:hover {
+  filter: brightness(105%);
+  -webkit-filter: brightness(105%);
+}
+button:focus,
+input:focus {
   box-shadow: 0 0 0 1px rgb(185, 185, 255);
+}
+button.text:focus,
+button.pure-text:focus {
+  box-shadow: none;
 }
 
 input {
@@ -121,6 +180,7 @@ input {
   text-transform: capitalize;
   align-items: center;
   gap: 4px;
+  height: fit-content;
 }
 
 @media (prefers-color-scheme: dark) {
