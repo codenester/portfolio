@@ -1,53 +1,72 @@
-@font-face{
-  font-family:"content";
+@font-face {
+  font-family: "content";
   src: url(./fonts/Content/Content-Regular.ttf);
 }
-@font-face{
-  font-family:"montserrat";
+
+@font-face {
+  font-family: "montserrat";
   src: url(./fonts/Montserrat/static/Montserrat-Regular.ttf);
 }
-@font-face{
-  font-family:"roboto";
-  src:url(./fonts/Roboto/Roboto-Thin.ttf);
-}
-@font-face{
-  font-family:"moul";
-  src:url(./fonts/Moul/Moul-Regular.ttf);
-}
-:root{
-  --dark-bg:#111111;
-  --light-bg:#fefefe;
-  --dark-text:#eeeeee;
-  --light-text:#222222;
-  --main-font:roboto,content, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  --title-font:montserrat,moul, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
+@font-face {
+  font-family: "roboto";
+  src: url(./fonts/Roboto/Roboto-Thin.ttf);
 }
+
+@font-face {
+  font-family: "moul";
+  src: url(./fonts/Moul/Moul-Regular.ttf);
+}
+
+:root {
+  --dark-bg: #111111;
+  --light-bg: #fefefe;
+  --dark-text: #eeeeee;
+  --light-text: #222222;
+  --main-font: roboto, content, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --title-font: montserrat, moul, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --d-primary: rgb(15, 177, 177);
+  --l-primary: rgb(8, 148, 148);
+  --d-secondary:rgb(212, 22, 212);
+  --l-secondary:rgb(153, 10, 153);
+  --d-success:rgb(0, 189, 0);
+  --l-success:rgb(1, 129, 1);
+  --d-warning:rgb(255, 208, 0);
+  --l-warning:rgb(236, 154, 0);
+  --d-error:rgb(250, 32, 32);
+  --l-error:rgb(206, 11, 11);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family:var(--main-font);
+  font-family: var(--main-font);
+  font-size: 1rem;
 }
-.title-f{
-  font-family:var(--title-font);
+
+.title-f {
+  font-family: var(--title-font);
 }
-.dark{
-  background-color:var(--dark-bg);
-  color:var(--dark-text);
+
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
 }
-.light{
-  background-color:var(--light-bg);
-  color:var(--light-text);
+
+.light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
 }
-.container{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -59,10 +78,56 @@ a {
   box-sizing: border-box;
 }
 
+.float-setting {
+  position: fixed;
+  top: 1rem;
+  left: 100%;
+  gap: 10px;
+  transform: translateX(calc(-100% - 1rem));
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  transition: 0.15s;
+}
+.dark button, .dark button.primary{
+  color: #ffffff;
+  font-weight: 900;
+  background-color: var(--d-primary);
+}
+button:hover,input:hover{
+  filter: brightness(105%);
+}
+button:focus, input:focus{
+  box-shadow: 0 0 0 1px rgb(185, 185, 255);
+}
+
+input {
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  transition: 0.1s;
+}
+
+.float-setting button {
+  display: flex;
+  text-transform: capitalize;
+  align-items: center;
+  gap: 4px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
