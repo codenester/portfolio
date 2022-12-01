@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "roboto";
-  src: url(./fonts/Roboto/Roboto-Thin.ttf);
+  src: url(./fonts/Roboto/Roboto-Regular.ttf);
 }
 
 @font-face {
@@ -19,7 +19,7 @@
 }
 
 :root {
-  --dark-bg: #111111;
+  --dark-bg: #222222;
   --light-bg: #fefefe;
   --dark-text: #eeeeee;
   --light-text: #222222;
@@ -29,18 +29,46 @@
   --title-font: montserrat, moul, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
-  --d-primary: rgb(15, 177, 177);
-  --l-primary: rgb(7, 131, 131);
+  --d-primary: rgb(3, 148, 148);
+  --l-primary: rgb(2, 107, 107);
+  --d-bright-primary:rgb(9, 224, 224);
+  --l-bright-primary:rgb(2, 150, 150);
   --d-alpha-primary: rgba(15, 177, 177, 0.05);
   --l-alpha-primary: rgb(7, 131, 131, 0.05);
+  --d-thick-alpha-primary: rgba(15, 177, 177, 0.2);
+  --l-thick-alpha-primary: rgb(7, 131, 131, 0.2);
   --d-secondary: rgb(212, 22, 212);
+  --d-bright-secondary: rgb(243, 32, 243);
+  --d-alpha-secondary: rgb(212, 22, 212,0.05);
+  --d-thick-alpha-secondary: rgb(212, 22, 212,0.2);
   --l-secondary: rgb(153, 10, 153);
-  --d-success: rgb(0, 189, 0);
-  --l-success: rgb(1, 129, 1);
-  --d-warning: rgb(255, 208, 0);
-  --l-warning: rgb(236, 154, 0);
+  --l-bright-secondary: rgb(172, 9, 172);
+  --l-alpha-secondary: rgb(153, 10, 153,0.05);
+  --l-thick-alpha-secondary: rgb(153, 10, 153,0.2);
+  --d-success: rgb(52, 151, 52);
+  --d-alpha-success: rgba(38, 184, 38, 0.05);
+  --d-thick-alpha-success: rgba(32, 187, 32, 0.2);
+  --d-bright-success: rgb(64, 212, 64);
+  --l-success: rgb(40, 150, 40);
+  --l-alpha-success: rgba(22, 122, 22, 0.05);
+  --l-thick-alpha-success: rgba(30, 131, 30, 0.2);
+  --l-bright-success: rgb(47, 156, 47);
+  --d-warning: rgb(221, 149, 15);
+  --d-bright-warning: rgb(255, 221, 71);
+  --d-alpha-warning: rgb(255, 208, 0,0.05);
+  --d-thick-alpha-warning: rgb(255, 208, 0,0.2);
+  --l-warning: rgb(253, 174, 28);
+  --l-bright-warning: rgb(248, 169, 23);
+  --l-alpha-warning: rgb(236, 154, 0,0.05);
+  --l-thick-alpha-warning: rgb(236, 154, 0,0.2);
   --d-error: rgb(250, 32, 32);
+  --d-bright-error: rgb(253, 68, 68);
+  --d-alpha-error: rgb(250, 32, 32,0.05);
+  --d-thick-alpha-error: rgb(250, 32, 32,0.2);
   --l-error: rgb(206, 11, 11);
+  --l-bright-error: rgb(235, 34, 34);
+  --l-alpha-error: rgb(206, 11, 11,0.05);
+  --l-thick-alpha-error: rgb(206, 11, 11,0.2);
 }
 
 html,
@@ -81,13 +109,15 @@ a {
 * {
   box-sizing: border-box;
 }
-.float-setting-wrap{
+
+.float-setting-wrap {
   position: fixed;
   top: 1rem;
   left: 100%;
   transform: translateX(calc(-100% - 1rem));
 }
-.float-btn{
+
+.float-btn {
   position: absolute;
 }
 
@@ -99,9 +129,11 @@ a {
   display: flex;
   position: absolute;
 }
-button.round{
+
+button.round {
   border-radius: 6px;
 }
+
 button {
   cursor: pointer;
   padding: 8px 12px;
@@ -109,65 +141,292 @@ button {
   font-family: inherit;
   font-size: inherit;
   border: none;
+  color: #eeeeee;
   transition: 0.15s;
 }
+
 .dark button,
 .dark button.primary {
-  color: #ffffff;
   background-color: var(--d-primary);
 }
+.dark button.secondary{
+  background-color: var(--d-secondary);
+}
+.dark button.success{
+  background-color: var(--d-success);
+}
+.dark button.warning{
+  background-color: var(--d-warning);
+}
+
 button.pure-text {
   padding: 2px 4px;
 }
+
+button.round {
+  border-radius: 4px;
+}
+
+button.circle {
+  border-radius: 50%;
+}
+
 .dark button.text,
 .dark button.pure-text,
 .light button.text,
 .light button.pure-text {
   background-color: transparent;
 }
-.dark button.text,.dark button.pure-text{
+
+.dark button.text,
+.dark button.pure-text {
   color: var(--dark-text);
 }
-.light button.text, .light button.pure-text{
-  color: var(--light-text);
+.dark button.secondary.text,
+.dark button.secondary.pure-text {
+  color: var(--d-secondary);
+}
+.dark button.success.text,
+.dark button.success.pure-text {
+  color: var(--d-bright-success);
+}
+.dark button.warning.text,
+.dark button.warning.pure-text {
+  color: var(--d-bright-warning);
 }
 .dark button.primary.text,
 .dark button.primary.pure-text {
   color: var(--d-primary);
-  background-color: transparent;
 }
-.light button,
-.light button.primary {
-  color: #eeeeee;
-  background-color: var(--l-primary);
+
+.light button.text,
+.light button.pure-text {
+  color: var(--light-text);
+}
+.light button.secondary.text,
+.light button.secondary.pure-text {
+  color: var(--l-secondary);
+}
+.light button.success.text,
+.light button.success.pure-text {
+  color: var(--l-success);
+  background-color: transparent;
 }
 .light button.primary.text,
 .light button.primary.pure-text {
   color: var(--l-primary);
+}
+
+.dark button.primary.text,
+.dark button.primary.pure-text {
+  color: var(--d-primary);
+}
+
+.light button,
+.light button.primary {
+  background-color: var(--l-primary);
+}
+.light button.secondary {
+  background-color: var(--l-secondary);
+}
+.light button.warning {
+  background-color: var(--l-warning);
+}
+.light button.success {
+  background-color: var(--l-success);
+}
+button.text, button.pure-text{
   background-color: transparent;
 }
+
+.light button.primary.text,
+.light button.primary.pure-text {
+  color: var(--l-primary);
+}
+.light button.warning.text,
+.light button.warning.pure-text {
+  color: var(--l-warning);
+  background-color: transparent;
+}
+
 .dark button.text:hover,
 .dark button.primary.text:hover {
   background-color: var(--d-alpha-primary);
 }
+.dark button.secondary.text:hover {
+  background-color: var(--d-alpha-secondary);
+}
+.dark button.success.text:hover {
+  background-color: var(--d-alpha-success);
+}
+.dark button.warning.text:hover {
+  background-color: var(--d-alpha-warning);
+}
+
 .light button.text:hover,
 .light button.primary.text:hover {
   background-color: var(--l-alpha-primary);
 }
+.light button.secondary.text:hover {
+  background-color: var(--l-alpha-secondary);
+}
+.light button.secondary.text:hover {
+  background-color: var(--l-alpha-success);
+}
+.light button.warning.text:hover {
+  background-color: var(--l-alpha-warning);
+}
+
 button:hover,
 input:hover {
   filter: brightness(105%);
-  -webkit-filter: brightness(105%);
 }
+
 button:focus,
 input:focus {
   box-shadow: 0 0 0 1px rgb(185, 185, 255);
 }
+
 button.text:focus,
 button.pure-text:focus {
   box-shadow: none;
 }
 
+.dark button.outlined,
+.dark button.primary.outlined {
+  background-color: transparent;
+  border: solid 1px var(--d-primary);
+  color: var(--d-primary);
+}
+.dark button.secondary.outlined {
+  background-color: transparent;
+  border: solid 1px var(--d-secondary);
+  color: var(--d-secondary);
+}
+.dark button.success.outlined {
+  background-color: transparent;
+  border: solid 1px var(--d-success);
+  color: var(--d-success);
+}
+.dark button.warning.outlined {
+  background-color: transparent;
+  border: solid 1px var(--d-warning);
+  color: var(--d-warning);
+}
+.dark button.outlined:focus,
+.dark button.primary.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--d-primary);
+}
+.dark button.secondary.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--d-secondary);
+}
+.dark button.success.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--d-success);
+}
+.dark button.warning.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--d-warning);
+}
+.dark button.outlined:hover,
+.dark button.primary.outlined:hover {
+  background-color: var(--d-thick-alpha-primary);
+}
+.dark button.secondary.outlined:hover {
+  background-color: var(--d-thick-alpha-secondary);
+}
+.dark button.success.outlined:hover {
+  background-color: var(--d-thick-alpha-success);
+}
+.dark button.warning.outlined:hover {
+  background-color: var(--d-thick-alpha-warning);
+}
+
+.light button.outlined,
+.light button.primary.outlined {
+  background-color: transparent;
+  border: solid 1px var(--l-primary);
+  color: var(--l-primary);
+}
+.light button.secondary.outlined {
+  background-color: transparent;
+  border: solid 1px var(--l-secondary);
+  color: var(--l-secondary);
+}
+.light button.success.outlined {
+  background-color: transparent;
+  border: solid 1px var(--l-success);
+  color: var(--l-success);
+}
+.light button.warning.outlined {
+  background-color: transparent;
+  border: solid 1px var(--l-warning);
+  color: var(--l-warning);
+}
+.light button.outlined:focus,
+.light button.primary.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--l-primary);
+}
+.light button.secondary.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--l-secondary);
+}
+.light button.success.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--l-success);
+}
+.light button.warning.outlined:focus {
+  box-shadow: 0 0 1px 1px var(--l-warning);
+}
+.light button.outlined:hover,
+.light button.primary.outlined:hover {
+  background-color: var(--l-thick-alpha-primary);
+}
+.light button.secondary.outlined:hover {
+  background-color: var(--l-thick-alpha-secondary);
+}
+.light button.success.outlined:hover {
+  background-color: var(--l-thick-alpha-success);
+}
+.light button.warning.outlined:hover {
+  background-color: var(--l-thick-alpha-warning);
+}
+button.alpha{
+  border: none;
+}
+button.alpha:hover{
+  filter: brightness(120%);
+}
+.dark button.alpha,
+.dark button.primary.alpha{
+  background-color: var(--d-thick-alpha-primary);
+  color: var(--d-bright-primary);
+}
+.dark button.secondary.alpha{
+  background-color: var(--d-thick-alpha-secondary);
+  color: var(--d-bright-secondary);
+}
+.dark button.success.alpha{
+  background-color: var(--d-thick-alpha-success);
+  color: var(--d-bright-success);
+}
+.dark button.warning.alpha{
+  background-color: var(--d-thick-alpha-warning);
+  color: var(--d-bright-warning);
+}
+.light button.alpha,
+.light button.primary.alpha{
+  background-color: var(--l-thick-alpha-primary);
+  color: var(--l-bright-primary);
+}
+.light button.secondary.alpha{
+  background-color: var(--l-thick-alpha-secondary);
+  color: var(--l-bright-secondary);
+}
+.light button.success.alpha{
+  background-color: var(--l-thick-alpha-success);
+  color: var(--l-bright-success);
+}
+.light button.warning.alpha{
+  background-color: var(--l-thick-alpha-warning);
+  color: var(--l-bright-warning);
+}
 input {
   outline: none;
   font-family: inherit;

@@ -34,7 +34,7 @@ export default function Setting() {
     return (
         <div className="float-setting-wrap">
             <button className="float-btn pure-text" style={{fontSize:'1.5rem'}}>
-                <i class="ri-settings-5-fill"></i>
+                <i className="ri-settings-5-fill"></i>
             </button>
             <div className="float-setting">
                 <button className="text" onClick={changeTheme}>
