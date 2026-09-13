@@ -1,42 +1,47 @@
-# sv
+# Rithea Sreng · Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Source for my personal portfolio site: a fully prerendered static site built with SvelteKit and
+deployed on Railway.
 
-## Creating a project
+Live: https://portfolio-production-9d65.up.railway.app
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Stack
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- SvelteKit 2.63, Svelte 5 (runes), Vite 8, TypeScript
+- `@sveltejs/adapter-static`: every route is prerendered to HTML at build time, so the site ships as
+  plain files with no server rendering
+- No CSS framework. The two theme palettes and the three corner styles are CSS custom properties
+  switched by `data-theme` and `data-shape` on `<html>`
 
-To recreate this project with the same configuration:
+## Layout
 
-```sh
-# recreate this project
-npx sv@0.17.0 create --template minimal --types ts --install npm portfolio
-```
+    src/lib/content/site.ts   all copy and data, as plain English strings
+    src/lib/components/       page sections and chrome (hero, about, work, experience, ...)
+    src/lib/theme.ts          theme read / apply / next
+    src/app.css               design tokens, both palettes, layout
+    server.js                 zero-dependency static file server for build/
+    .railway/railway.ts       Railway Infrastructure as Code (start command, healthcheck)
+    build/                    written by npm run build, not in version control
 
-## Developing
+## Local development
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+    npm install
+    npm run dev      # dev server on 127.0.0.1:5173
+    npm run check    # svelte-check
+    npm run build    # prerender the site into build/
+    npm start        # serve build/ on $PORT (default 3000)
 
-```sh
-npm run dev
+## Deployment
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Railway builds this repo with Railpack, which installs devDependencies and runs `npm run build`, then
+starts the result with `npm start`. The service configuration lives in `.railway/railway.ts` and sets
+the start command plus a healthcheck on `/healthz`. Pushes to `main` deploy automatically.
 
-## Building
+`server.js` exists because the site needs no application server, only files served well. Two details
+are deliberate: content-hashed files under `/_app/immutable` are cached for a year while HTML is
+always revalidated, and non-GET/HEAD methods are rejected.
 
-To create a production version of your app:
+## Notes
 
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- The site is English only, by choice.
+- Copy follows two rules: every claim is traceable to my CV, and prose avoids dashes as punctuation.
