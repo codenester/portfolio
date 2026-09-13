@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-shape="rounded">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Bootstrap: paint the stored theme / corner style before first paint so
+		     there is no flash. Keep in sync with src/lib/theme.ts and
+		     src/lib/ui-shape.ts. A first visit (nothing stored) starts DARK. -->
+		<script>
+			(function () {
+				try {
+					var d = document.documentElement;
+					var t = localStorage.getItem('rithea.theme');
+					if (t !== 'light' && t !== 'dark') t = 'dark';
+					d.dataset.theme = t;
+
+					var s = localStorage.getItem('rithea.shape');
+					d.dataset.shape = s === 'rect' || s === 'pill' || s === 'rounded' ? s : 'rounded';
+				} catch (e) {}
+			})();
+		</script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Rithea Sreng",
+				"jobTitle": "Assistant Supervisor, Web Development",
+				"email": "mailto:codenester.dev@gmail.com",
+				"telephone": "+85569272705",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Phnom Penh",
+					"addressCountry": "KH"
+				},
+				"worksFor": { "@type": "Organization", "name": "Chipmong Group" },
+				"knowsAbout": [
+					"C#",
+					".NET Core",
+					"POS platforms",
+					"ERP systems",
+					"Vue 3",
+					"SvelteKit",
+					"SQL Server",
+					"PostgreSQL",
+					"offline-first architecture",
+					"SAP integration"
+				],
+				"sameAs": ["https://www.linkedin.com/in/sreng-rithea-9a885a1a9"]
+			}
+		</script>
+	</body>
+</html>
