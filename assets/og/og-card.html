@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>og:image candidates</title>
+		<style>
+			@font-face {
+				font-family: 'Manrope';
+				font-weight: 400 700;
+				font-display: block;
+				src: url('/fonts/manrope.woff2') format('woff2');
+			}
+			@font-face {
+				font-family: 'Space Grotesk';
+				font-weight: 500 700;
+				font-display: block;
+				src: url('/fonts/space-grotesk.woff2') format('woff2');
+			}
+
+			:root {
+				--brand: #d946ef;
+				--brand-strong: #a855f7;
+				--brand-ink-l: #8a1cae;
+				--brand-ink-d: #e6c4ff;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 40px;
+				background: #efe9f3;
+				font-family: 'Manrope', system-ui, sans-serif;
+				display: grid;
+				gap: 40px;
+				justify-items: start;
+			}
+
+			.tag {
+				font: 600 13px/1 ui-monospace, Menlo, monospace;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: #6a5a76;
+				margin-bottom: -28px;
+			}
+
+			.card {
+				position: relative;
+				width: 1200px;
+				height: 630px;
+				overflow: hidden;
+				display: grid;
+			}
+
+			/* ---------------- A: mark + type, dark ---------------- */
+			.a {
+				background: radial-gradient(120% 130% at 82% 8%, #2d1040 0%, #150d1c 58%);
+				align-content: center;
+				padding: 76px 88px;
+				gap: 26px;
+			}
+			.a .row-top {
+				display: flex;
+				align-items: center;
+				gap: 22px;
+			}
+			.a .name {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 78px;
+				line-height: 1;
+				letter-spacing: -0.02em;
+				color: #f4edfa;
+			}
+			.a .role {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 500;
+				font-size: 27px;
+				color: var(--brand-ink-d);
+			}
+			.a .pitch {
+				font-size: 24px;
+				line-height: 1.45;
+				color: #cbb8dd;
+				max-width: 26ch;
+			}
+			.a .foot {
+				position: absolute;
+				left: 88px;
+				right: 88px;
+				bottom: 64px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font: 500 15px/1 ui-monospace, Menlo, monospace;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #8f7aa8;
+				border-top: 1px solid rgba(168, 85, 247, 0.35);
+				padding-top: 20px;
+			}
+			.a .accent {
+				position: absolute;
+				right: -140px;
+				top: -140px;
+				width: 520px;
+				height: 520px;
+				border-radius: 50%;
+				background: radial-gradient(circle, rgba(217, 70, 239, 0.28), transparent 68%);
+			}
+
+			/* ---------------- B: console window, dark ---------------- */
+			.b {
+				background: #150d1c;
+				padding: 56px 64px;
+				align-content: center;
+			}
+			.b .win {
+				border: 1px solid rgba(168, 85, 247, 0.5);
+				border-radius: 18px;
+				background: #1e1428;
+				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+				overflow: hidden;
+			}
+			.b .bar {
+				display: flex;
+				align-items: center;
+				gap: 9px;
+				padding: 15px 18px;
+				border-bottom: 1px solid rgba(168, 85, 247, 0.28);
+			}
+			.b .dot {
+				width: 11px;
+				height: 11px;
+				border-radius: 50%;
+				background: rgba(230, 196, 255, 0.3);
+			}
+			.b .dot:first-child {
+				background: var(--brand);
+			}
+			.b .file {
+				margin-left: 8px;
+				font: 500 14px/1 ui-monospace, Menlo, monospace;
+				color: #8f7aa8;
+			}
+			.b .body {
+				padding: 30px 34px 38px;
+				display: grid;
+				gap: 14px;
+			}
+			.b .prompt {
+				font: 500 17px/1 ui-monospace, Menlo, monospace;
+				color: #c9a2ea;
+			}
+			.b .name {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 62px;
+				line-height: 1.05;
+				color: #f4edfa;
+				margin: 6px 0 4px;
+			}
+			.b dl {
+				margin: 0;
+				display: grid;
+				gap: 9px;
+			}
+			.b .line {
+				display: grid;
+				grid-template-columns: 200px 1fr;
+				gap: 14px;
+				font-size: 19px;
+			}
+			.b dt {
+				font-family: ui-monospace, Menlo, monospace;
+				font-size: 15px;
+				color: var(--brand-ink-d);
+			}
+			.b dd {
+				margin: 0;
+				color: #cbb8dd;
+			}
+			.b .caret {
+				display: inline-block;
+				width: 10px;
+				height: 20px;
+				background: var(--brand);
+				vertical-align: -3px;
+			}
+
+			/* ---------------- C: light, glyph grid ---------------- */
+			.c {
+				background: #faf6fb;
+				align-content: end;
+				padding: 70px 80px;
+				gap: 18px;
+			}
+			.c .grid {
+				position: absolute;
+				inset: 0;
+				opacity: 0.5;
+				background-image: linear-gradient(rgba(138, 28, 174, 0.11) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(138, 28, 174, 0.11) 1px, transparent 1px);
+				background-size: 60px 60px;
+			}
+			.c .glow {
+				position: absolute;
+				right: -120px;
+				top: -180px;
+				width: 620px;
+				height: 620px;
+				border-radius: 50%;
+				background: radial-gradient(circle, rgba(217, 70, 239, 0.22), transparent 66%);
+			}
+			.c .inner {
+				position: relative;
+				display: grid;
+				gap: 16px;
+			}
+			.c .name {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 82px;
+				line-height: 1;
+				letter-spacing: -0.02em;
+				color: #191023;
+			}
+			.c .role {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 600;
+				font-size: 28px;
+				color: var(--brand-ink-l);
+			}
+			.c .pitch {
+				font-size: 24px;
+				line-height: 1.45;
+				color: #443551;
+				max-width: 30ch;
+			}
+			.c .foot {
+				position: relative;
+				margin-top: 14px;
+				display: flex;
+				align-items: center;
+				gap: 16px;
+				font: 600 15px/1 ui-monospace, Menlo, monospace;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--brand-ink-l);
+			}
+			.c .rule {
+				flex: 1;
+				height: 1px;
+				background: rgba(25, 16, 35, 0.18);
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<p class="tag">A · mark and type (dark)</p>
+			<div class="card a" id="card-a">
+				<span class="accent"></span>
+				<div class="row-top">
+					<svg width="76" height="76" viewBox="0 0 48 48">
+						<defs>
+							<linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+								<stop offset="0%" stop-color="#d946ef" />
+								<stop offset="100%" stop-color="#a855f7" />
+							</linearGradient>
+						</defs>
+						<g
+							fill="none"
+							stroke="url(#gA)"
+							stroke-width="3.4"
+							stroke-linecap="square"
+							stroke-linejoin="miter"
+						>
+							<path d="M14 11 L6 24 L14 37" />
+							<path d="M34 11 L42 24 L34 37" />
+							<path d="M20 36 V13 H26 L30 17 V23 L26 27 H20" />
+							<path d="M26 27 L31 36" />
+						</g>
+					</svg>
+					<span class="name">Rithea Sreng</span>
+				</div>
+				<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+				<p class="pitch">POS, ERP and integration platforms, built and run end to end.</p>
+				<div class="foot">
+					<span>Phnom Penh, Cambodia · 7 years</span>
+					<span>rithea-sreng.up.railway.app</span>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<p class="tag">B · console window (dark)</p>
+			<div class="card b" id="card-b">
+				<div class="win">
+					<div class="bar">
+						<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+						<span class="file">spec.yml</span>
+					</div>
+					<div class="body">
+						<span class="prompt">rithea@sreng:~/portfolio$ cat spec.yml</span>
+						<p class="name">Rithea Sreng</p>
+						<dl>
+							<div class="line">
+								<dt>role</dt>
+								<dd>Software Development Supervisor · Full-Stack Engineer</dd>
+							</div>
+							<div class="line"><dt>based_in</dt><dd>Phnom Penh, Cambodia</dd></div>
+							<div class="line">
+								<dt>focus</dt>
+								<dd>POS and ERP platforms · offline-first retail · integrations</dd>
+							</div>
+							<div class="line"><dt>builds</dt><dd>architecture · delivery · releases · teams</dd></div>
+						</dl>
+						<span class="caret"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<p class="tag">C · light, glyph grid</p>
+			<div class="card c" id="card-c">
+				<span class="grid"></span><span class="glow"></span>
+				<div class="inner">
+					<p class="name">Rithea Sreng</p>
+					<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+					<p class="pitch">POS, ERP and integration platforms, built and run end to end.</p>
+					<div class="foot">
+						<span>Phnom Penh, Cambodia · 7 years</span>
+						<span class="rule"></span>
+						<span>rithea-sreng.up.railway.app</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -28,6 +28,7 @@ const TYPES = {
 	'.avif': 'image/avif',
 	'.ico': 'image/x-icon',
 	'.pdf': 'application/pdf',
+	'.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 	'.txt': 'text/plain; charset=utf-8',
 	'.xml': 'application/xml; charset=utf-8',
 	'.woff2': 'font/woff2',

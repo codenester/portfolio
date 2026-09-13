@@ -36,6 +36,16 @@
 	/>
 	<meta property="og:type" content="profile" />
 	<meta property="og:url" content="{siteUrl}/" />
+	<meta property="og:image" content="{siteUrl}/og/og.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta
+		property="og:image:alt"
+		content="Rithea Sreng, software development supervisor and full-stack engineer, Phnom Penh, Cambodia"
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="{siteUrl}/og/og.png" />
 	<link rel="canonical" href="{siteUrl}/" />
 </svelte:head>
 

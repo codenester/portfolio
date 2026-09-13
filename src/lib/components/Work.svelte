@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { cases, ui } from '$lib/content/site';
 	import ModuleFlow from '$lib/components/ModuleFlow.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 </script>
 
 <section class="section" id="work">
 	<div class="wrap">
 		<div class="section-head">
-			<h2>{ui.work.title}</h2>
+			<h2><Icon name="work" size={17} />{ui.work.title}</h2>
 			<p>{ui.work.lead}</p>
 		</div>
 

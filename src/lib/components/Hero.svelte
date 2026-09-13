@@ -26,22 +26,35 @@
 		</div>
 
 		<div class="spec">
-			<div class="spec-header">
-				<span class="title">{ui.hero.atAGlance}</span>
-				<span class="chip">PHN · KH</span>
+			<div class="spec-bar" aria-hidden="true">
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="spec-file">spec.yml</span>
 			</div>
 
-			<dl class="spec-rows">
-				{#each facts as fact (fact.label)}
-					<div class="spec-row">
-						<dt>{fact.label}</dt>
-						<dd>{fact.value}</dd>
-					</div>
-				{/each}
-			</dl>
+			<div class="spec-body">
+				<p class="spec-line" aria-hidden="true">
+					rithea@sreng<span class="dim">:~/portfolio$</span> cat spec.yml
+				</p>
 
-			<div class="arch">
-				<ArchitectureMap />
+				<dl class="spec-rows" aria-label={ui.hero.atAGlance}>
+					{#each facts as fact (fact.label)}
+						<div class="spec-row">
+							<dt>{fact.label.toLowerCase().replaceAll(' ', '_')}</dt>
+							<dd><span class="eq" aria-hidden="true">=</span>{fact.value}</dd>
+						</div>
+					{/each}
+				</dl>
+
+				<div class="arch">
+					<p class="spec-line" aria-hidden="true">
+						rithea@sreng<span class="dim">:~/portfolio$</span> cat architecture.svg
+					</p>
+					<ArchitectureMap />
+				</div>
+
+				<p class="spec-cursor" aria-hidden="true"><span class="caret"></span></p>
 			</div>
 		</div>
 	</div>

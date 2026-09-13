@@ -60,7 +60,7 @@
 			<text
 				x="11"
 				y="23"
-				font-family="var(--font-display)"
+				class="map-title"
 				font-size="12.5"
 				font-weight="600"
 				fill="var(--ink)"
@@ -70,7 +70,7 @@
 			<text
 				x="228"
 				y="23"
-				font-family="var(--font-mono)"
+				class="map-note"
 				font-size="9.5"
 				fill="var(--muted)"
 			>
@@ -89,8 +89,20 @@
 			stroke-width="1.1"
 			stroke-dasharray="4 3"
 		/>
-		<text x="12" y="21" font-family="var(--font-mono)" font-size="9.5" fill="var(--muted)">
+		<text x="12" y="21" class="map-note" font-size="9.5" fill="var(--muted)">
 			{integration}
 		</text>
 	</g>
 </svg>
+
+<style>
+	/* These have to be CSS classes, not SVG presentation attributes: an attribute
+	   value cannot resolve var(--font-*), so the text fell back to a default face. */
+	.map-title {
+		font-family: var(--font-display);
+	}
+
+	.map-note {
+		font-family: var(--font-mono);
+	}
+</style>

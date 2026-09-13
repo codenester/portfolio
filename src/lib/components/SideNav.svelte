@@ -1,17 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { ui } from '$lib/content/site';
+	import Icon from '$lib/components/Icon.svelte';
 
 	// Right-hand section rail. No top bar any more — this IS the navigation,
-	// drawn as carousel dots: one dot per section, the current one filled.
+	// drawn as carousel dots: one dot per section, the current one filled. The
+	// hover/focus chip repeats the section's own mark, so the rail reads even
+	// when the label chip is hidden.
 	const items = [
-		{ id: 'top', label: ui.nav.home },
-		{ id: 'about', label: ui.about.nav },
-		{ id: 'work', label: ui.nav.work },
-		{ id: 'experience', label: ui.nav.experience },
-		{ id: 'skills', label: ui.nav.skills },
-		{ id: 'education', label: ui.nav.education },
-		{ id: 'contact', label: ui.nav.contact }
+		{ id: 'top', label: ui.nav.home, icon: 'home' },
+		{ id: 'about', label: ui.about.nav, icon: 'user' },
+		{ id: 'work', label: ui.nav.work, icon: 'work' },
+		{ id: 'experience', label: ui.nav.experience, icon: 'briefcase' },
+		{ id: 'skills', label: ui.nav.skills, icon: 'code' },
+		{ id: 'education', label: ui.nav.education, icon: 'cert' },
+		{ id: 'contact', label: ui.nav.contact, icon: 'chat' }
 	];
 
 	// Scroll-spy: a section is current once its top passes 35% of the viewport.
@@ -63,7 +66,7 @@
 					aria-current={active === item.id ? 'true' : undefined}
 					aria-label={item.label}
 				>
-					<span class="label">{item.label}</span>
+					<span class="label"><Icon name={item.icon} size={12} />{item.label}</span>
 					<span class="dot" aria-hidden="true"></span>
 				</a>
 			</li>
@@ -123,6 +126,9 @@
 	.side-nav .label {
 		position: absolute;
 		right: 28px;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
 		padding: 3px 9px;
 		border: 1px solid var(--border-strong);
 		border-radius: var(--radius-control);
@@ -138,6 +144,12 @@
 		transform: translateX(5px);
 		pointer-events: none;
 		transition: opacity 0.18s, transform 0.18s;
+	}
+
+	/* the mark comes from the Icon component, so a plain child selector would be
+	   scoped away: :global() is required here */
+	.side-nav .label :global(svg) {
+		flex: none;
 	}
 
 	.side-nav a:hover .label,

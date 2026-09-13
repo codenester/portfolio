@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { about, profile, style, ui } from '$lib/content/site';
+	import Icon from '$lib/components/Icon.svelte';
 
 	// If /img/profile.jpg is not in place yet the frame falls back to the
 	// monogram instead of showing a broken image.
@@ -34,7 +35,7 @@
 			<!-- on phones this is the block that sits on the photo; on desktop it is
 			     the first column of the bio, with .about-rest continuing it -->
 			<div class="about-body">
-				<h2>{ui.about.title}</h2>
+				<h2><Icon name="user" size={17} />{ui.about.title}</h2>
 				<p class="lead">{about.paragraphs[0]}</p>
 			</div>
 
@@ -52,7 +53,7 @@
 		<div class="rows">
 			{#each style as item (item.title)}
 				<div class="row">
-					<p class="k">{item.title}</p>
+					<p class="k"><Icon name={item.icon} size={15} />{item.title}</p>
 					<p class="v">{item.body}</p>
 				</div>
 			{/each}

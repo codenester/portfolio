@@ -29,22 +29,26 @@ export const profile = {
 /* hero spec sheet — factual rows, not decoration                      */
 /* ------------------------------------------------------------------ */
 
-export const facts: { label: string; value: string }[] = [
+export const facts: { label: string; value: string; icon: string }[] = [
 	{
 		label: 'Based in',
-		value: 'Phnom Penh, Cambodia'
+		value: 'Phnom Penh, Cambodia',
+		icon: 'pin'
 	},
 	{
 		label: 'Currently',
-		value: 'Assistant Supervisor, Web Development at Chipmong Group'
+		value: 'Assistant Supervisor, Web Development at Chipmong Group',
+		icon: 'briefcase'
 	},
 	{
 		label: 'Focus',
-		value: 'POS & ERP platforms, offline-first retail, integrations'
+		value: 'POS & ERP platforms, offline-first retail, integrations',
+		icon: 'focus'
 	},
 	{
 		label: 'Core stack',
-		value: '.NET Core · Vue 3 / Nuxt · SvelteKit · SQL Server · PostgreSQL · SQLite · Redis'
+		value: '.NET Core · Vue 3 / Nuxt · SvelteKit · SQL Server · PostgreSQL · SQLite · Redis',
+		icon: 'stack'
 	}
 ];
 
@@ -247,36 +251,43 @@ export const about: { paragraphs: string[]; caption: string } = {
 	]
 };
 
-export const style: { title: string; body: string }[] = [
+export const style: { title: string; body: string; icon: string }[] = [
 	{
 		title: 'End-to-end ownership',
-		body: 'Plan, design, build, release and support the platform myself. When live store operations depend on it, I am the person accountable.'
+		body: 'Plan, design, build, release and support the platform myself. When live store operations depend on it, I am the person accountable.',
+		icon: 'shield'
 	},
 	{
 		title: 'Teaching over lecturing',
-		body: 'Raised developer quality at Chipmong through hands-on code review, and mentored juniors at One Click Solution, and trained the support team to fix recurring human-error cases at the source.'
+		body: 'Raised developer quality at Chipmong through hands-on code review, and mentored juniors at One Click Solution, and trained the support team to fix recurring human-error cases at the source.',
+		icon: 'book'
 	},
 	{
 		title: 'Between business and code',
-		body: 'Sat between store teams, business stakeholders and the developers, turning operational needs into features people actually use.'
+		body: 'Sat between store teams, business stakeholders and the developers, turning operational needs into features people actually use.',
+		icon: 'translate'
 	},
 	{
 		title: 'Learn the new stack',
-		body: 'Took on a new front-end stack at nearly every job as the market moved: React and Svelte at Biztools, Vue 3 and Nuxt at Chipmong.'
+		body: 'Took on a new front-end stack at nearly every job as the market moved: React and Svelte at Biztools, Vue 3 and Nuxt at Chipmong.',
+		icon: 'sparkle'
 	},
 	{
 		title: 'Triage under pressure',
-		body: 'A POS running 24/7 across 20+ stores makes prioritisation a daily habit: urgent operational fixes weighed against scheduled feature work.'
+		body: 'A POS running 24/7 across 20+ stores makes prioritisation a daily habit: urgent operational fixes weighed against scheduled feature work.',
+		icon: 'compass'
 	}
 ];
 
-export const skillGroups: { label: string; items: string[] }[] = [
+export const skillGroups: { label: string; items: string[]; icon: string }[] = [
 	{
 		label: 'Programming',
+		icon: 'code',
 		items: ['C#', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS']
 	},
 	{
 		label: 'Backend',
+		icon: 'server',
 		items: [
 			'.NET Framework 4.x',
 			'.NET Core / .NET',
@@ -287,10 +298,12 @@ export const skillGroups: { label: string; items: string[] }[] = [
 	},
 	{
 		label: 'Frontend',
+		icon: 'layout',
 		items: ['Vue 3 + Nuxt', 'SvelteKit / Svelte', 'React', 'Next.js']
 	},
 	{
 		label: 'Data & tooling',
+		icon: 'database',
 		items: [
 			'SQL Server',
 			'PostgreSQL',
@@ -302,6 +315,7 @@ export const skillGroups: { label: string; items: string[] }[] = [
 	},
 	{
 		label: 'Architecture & delivery',
+		icon: 'flow',
 		items: [
 			'System design & architecture',
 			'Database design',
@@ -312,6 +326,7 @@ export const skillGroups: { label: string; items: string[] }[] = [
 	},
 	{
 		label: 'Practices',
+		icon: 'shield',
 		items: [
 			'Agile / Scrum',
 			'Code review',
@@ -323,6 +338,7 @@ export const skillGroups: { label: string; items: string[] }[] = [
 	},
 	{
 		label: 'Leadership',
+		icon: 'team',
 		items: [
 			'Team supervision & mentoring',
 			'Requirements analysis',
@@ -332,26 +348,30 @@ export const skillGroups: { label: string; items: string[] }[] = [
 	}
 ];
 
-export const education: { title: string; org: string; year: string }[] = [
+export const education: { title: string; org: string; year: string; icon: string }[] = [
 	{
 		title: 'Google Project Management Certificate',
 		org: 'Coursera · full project-management lifecycle',
-		year: 'In progress'
+		year: 'In progress',
+		icon: 'cert'
 	},
 	{
 		title: 'Google Agile Project Management Certificate',
 		org: 'Coursera · Agile & Scrum',
-		year: '2026'
+		year: '2026',
+		icon: 'award'
 	},
 	{
 		title: 'Bachelor of Computer Science',
 		org: 'National Polytechnic Institute of Cambodia',
-		year: '2019 – 2022'
+		year: '2019 – 2022',
+		icon: 'graduation'
 	},
 	{
 		title: 'High School Diploma',
 		org: 'Bak Touk High School',
-		year: '2014 – 2018'
+		year: '2014 – 2018',
+		icon: 'book'
 	}
 ];
 
@@ -414,6 +434,7 @@ export const ui = {
 		title: 'Let’s talk',
 		lead: 'Open to conversations about development supervision, platform ownership and full-stack work, in Phnom Penh or remote.',
 		cv: 'Download CV (PDF)',
+		cvDocx: 'Download CV (DOCX)',
 		linkedin: 'LinkedIn',
 		phone: 'Phone',
 		email: 'Email',
