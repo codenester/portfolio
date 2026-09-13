@@ -3,6 +3,12 @@
  * All copy is English-only; keep claims traceable to the CV.
  */
 
+/**
+ * Canonical origin of the deployed site. Change it here and in the two files
+ * that cannot import it: static/robots.txt and static/sitemap.xml.
+ */
+export const siteUrl = 'https://rithea-sreng.up.railway.app';
+
 
 export const profile = {
 	name: 'Rithea Sreng',

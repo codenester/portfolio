@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codenester.dev/sitemap.xml
+Sitemap: https://rithea-sreng.up.railway.app/sitemap.xml

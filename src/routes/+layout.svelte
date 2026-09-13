@@ -4,7 +4,7 @@
 	import SideNav from '$lib/components/SideNav.svelte';
 	import CornerControls from '$lib/components/CornerControls.svelte';
 	import FirstVisitGuide from '$lib/components/FirstVisitGuide.svelte';
-	import { profile, ui } from '$lib/content/site';
+	import { profile, siteUrl, ui } from '$lib/content/site';
 	import { readShape, applyShape } from '$lib/ui-shape';
 	import { readTheme, applyTheme } from '$lib/theme';
 
@@ -35,8 +35,8 @@
 		content="POS, ERP and integration platforms built and run end to end: architecture, delivery, releases and the teams behind them."
 	/>
 	<meta property="og:type" content="profile" />
-	<meta property="og:url" content="https://codenester.dev/" />
-	<link rel="canonical" href="https://codenester.dev/" />
+	<meta property="og:url" content="{siteUrl}/" />
+	<link rel="canonical" href="{siteUrl}/" />
 </svelte:head>
 
 <CornerControls />
