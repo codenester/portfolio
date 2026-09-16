@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Hero name block: presentation variants</title>
+		<style>
+			/* the real faces, served from the project root by the preview server */
+			@font-face {
+				font-family: 'Space Grotesk';
+				src: url('/static/fonts/space-grotesk.woff2') format('woff2');
+				font-weight: 500 700;
+				font-display: block;
+			}
+
+			:root {
+				--font-display: 'Space Grotesk', system-ui, sans-serif;
+				--font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+			}
+
+			body {
+				margin: 0;
+				padding: 22px;
+				background: #2b2333;
+				font-family: var(--font-display);
+			}
+			h1.doc {
+				font-size: 15px;
+				font-weight: 700;
+				margin: 0 0 6px;
+				color: #f4edfa;
+			}
+			p.note {
+				font-size: 11.5px;
+				line-height: 1.55;
+				color: #c9bcd6;
+				margin: 0 0 20px;
+				max-width: 100ch;
+			}
+
+			/* ---- the real hero block, one palette per class ---- */
+			.row {
+				padding: 26px 30px 30px;
+				border-radius: 12px;
+				margin-bottom: 12px;
+			}
+			.row.light {
+				--bg: #faf6fb;
+				--ink: #191023;
+				--brand-ink: #8a1cae;
+				--mark-file: url('/static/icon/mark-light.png');
+				background: var(--bg);
+				color: var(--ink);
+			}
+			.row.dark {
+				--bg: #150d1c;
+				--ink: #f4edfa;
+				--brand-ink: #e6c4ff;
+				--mark-file: url('/static/icon/mark-dark.png');
+				background: var(--bg);
+				color: var(--ink);
+			}
+
+			.eyebrow {
+				font-family: var(--font-mono);
+				font-size: 11.5px;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--brand-ink);
+				margin: 0 0 18px;
+			}
+
+			.headline {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 68px;
+				letter-spacing: -0.03em;
+				line-height: 1.12;
+				margin: 0 0 6px;
+				--h1-size: 68px;
+				--mark-h: calc(1.4 / 0.885 * var(--h1-size));
+			}
+			.headline .mark-slot {
+				font-size: 0;
+			}
+			.headline .name {
+				font-size: var(--h1-size);
+			}
+			.headline .mark {
+				height: var(--mark-h);
+				width: auto;
+				margin-left: calc(-0.135 * var(--mark-h));
+				margin-right: calc(0.014 * var(--h1-size) - 0.136 * var(--mark-h));
+				/* A: the ink sits on the baseline, so all of the extra height goes up */
+				vertical-align: calc(-0.06 * var(--mark-h));
+			}
+			.role {
+				font-family: var(--font-display);
+				font-size: 20px;
+				color: var(--brand-ink);
+				margin: 0;
+			}
+
+			/* ---- B: the extra height is split above the cap line and below the baseline ---- */
+			.row[data-variant='B'] .mark {
+				vertical-align: calc(-0.281 * var(--mark-h));
+			}
+			/* ---- C: the name drops to 500 so it stops outweighing the mark ---- */
+			.row[data-variant='C'] .headline {
+				font-weight: 500;
+			}
+			/* ---- D: the gap the taller line box opened above the mark is reclaimed ---- */
+			.row[data-variant='D'] .headline {
+				margin-top: -14px;
+			}
+
+			.label {
+				font-family: var(--font-mono);
+				font-size: 10px;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: #c9bcd6;
+				margin: 0 0 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="doc">Hero name block: four presentation variants</h1>
+		<p class="note">
+			Same mark, same 2x-the-S size, same zero-space slot, same tight gap before the "i". Only the
+			presentation changes: A is what ships today. B splits the mark's extra height above the cap line and
+			below the baseline instead of stacking all of it on top. C drops the name from weight 700 to 500,
+			because the mark's strokes are much lighter than the bold face. D pulls the block up into the gap the
+			taller line box opened, so the eyebrow sits closer to the mark. Name a letter.
+		</p>
+
+		<p class="label">dark palette</p>
+		<div class="row dark" data-variant="A">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-dark.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row dark" data-variant="B">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-dark.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row dark" data-variant="C">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-dark.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row dark" data-variant="D">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-dark.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<p class="label" style="margin-top: 24px">light palette</p>
+		<div class="row light" data-variant="A">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-light.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row light" data-variant="B">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-light.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row light" data-variant="C">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-light.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+
+		<div class="row light" data-variant="D">
+			<p class="eyebrow">Phnom Penh, Cambodia · available for a conversation</p>
+			<h1 class="headline">
+				<span class="mark-slot"><img class="mark" src="/static/icon/mark-light.png" alt="" /><span class="name">ithea Sreng</span></span>
+			</h1>
+			<p class="role">Software Development Supervisor · Full-Stack Engineer</p>
+		</div>
+	</body>
+</html>

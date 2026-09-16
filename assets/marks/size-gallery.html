@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Hero R: size candidates</title>
+		<style>
+			/* the real faces, served from the project root by the preview server */
+			@font-face {
+				font-family: 'Space Grotesk';
+				src: url('/static/fonts/space-grotesk.woff2') format('woff2');
+				font-weight: 500 700;
+				font-display: block;
+			}
+			:root {
+				--bg-light: #faf6fb;
+				--bg-dark: #150d1c;
+				--ink-light: #191023;
+				--ink-dark: #f4edfa;
+			}
+			body {
+				margin: 0;
+				padding: 24px;
+				background: #2b2333;
+				color: #f4edfa;
+				font-family: 'Space Grotesk', system-ui, sans-serif;
+			}
+			h1.doc {
+				font-size: 15px;
+				margin: 0 0 18px;
+				font-weight: 700;
+			}
+			/* EXACTLY the hero heading: Space Grotesk 700, clamp top end, and the
+			   same derivation of the offsets from one --mark-h */
+			.headline {
+				font-family: 'Space Grotesk', system-ui, sans-serif;
+				font-weight: 700;
+				font-size: 68px;
+				letter-spacing: -0.03em;
+				line-height: 1.12;
+				margin: 0 0 6px;
+				white-space: nowrap;
+			}
+			.headline .mark {
+				height: var(--mark-h);
+				width: auto;
+				vertical-align: calc(-0.06 * var(--mark-h));
+				margin-left: calc(-0.135 * var(--mark-h));
+				margin-right: calc(0.014em - 0.136 * var(--mark-h));
+			}
+			.row {
+				display: grid;
+				grid-template-columns: 46px 1fr;
+				gap: 14px;
+				align-items: center;
+				padding: 14px 18px;
+				border-radius: 10px;
+				margin-bottom: 10px;
+			}
+			.row.dark {
+				background: var(--bg-dark);
+				color: var(--ink-dark);
+			}
+			.row.light {
+				background: var(--bg-light);
+				color: var(--ink-light);
+			}
+			.tag {
+				font-size: 13px;
+				font-weight: 700;
+				opacity: 0.75;
+			}
+			.tag small {
+				display: block;
+				font-weight: 500;
+				font-size: 10px;
+				opacity: 0.75;
+				line-height: 1.3;
+			}
+			.note {
+				font-size: 11px;
+				opacity: 0.7;
+				margin: 0 0 20px;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="doc">Hero R: sizes as a multiple of the letter S</h1>
+		<p class="note">
+			Every row uses one file per palette and the same derivation from --mark-h as app.css, so only the size
+			differs. The multiple is the mark's INK against the height of the capital S (0.70 of the heading size),
+			and --mark-h is that multiple times 0.70 / 0.885. C below is what the site ships. Name a letter and I set
+			--mark-h to it. The heading grows taller as the mark grows, because a tall image in a line of type adds
+			height, which is what keeps the mark clear of the line above.
+		</p>
+
+		<div class="row dark" style="--mark-h: 0.791em">
+			<div class="tag">A<small>1.0x the S<br />exact fit</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-dark.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row dark" style="--mark-h: 1.186em">
+			<div class="tag">B<small>1.5x the S</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-dark.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row dark" style="--mark-h: 1.582em">
+			<div class="tag">C<small>2.0x the S<br />shipped</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-dark.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row dark" style="--mark-h: 1.977em">
+			<div class="tag">D<small>2.5x the S</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-dark.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<h1 class="doc" style="margin-top: 26px">The same four on the light palette</h1>
+
+		<div class="row light" style="--mark-h: 0.791em">
+			<div class="tag">A<small>1.0x</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-light.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row light" style="--mark-h: 1.186em">
+			<div class="tag">B<small>1.5x</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-light.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row light" style="--mark-h: 1.582em">
+			<div class="tag">C<small>2.0x shipped</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-light.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+
+		<div class="row light" style="--mark-h: 1.977em">
+			<div class="tag">D<small>2.5x</small></div>
+			<div class="headline">
+				<img class="mark" src="/static/icon/mark-light.png" alt="" />Rithea Sreng
+			</div>
+		</div>
+	</body>
+</html>

@@ -428,9 +428,55 @@ h2 > svg {
 }
 
 .hero h1 {
-	font-size: clamp(38px, 6.2vw, 68px);
+	--h1-size: clamp(38px, 6.2vw, 68px);
+	/* the mark is sized FROM the heading, in px, so the slot below is free to carry
+	   font-size: 0 without disturbing the art. 1.4 = two cap heights (the ask: twice
+	   the height of the letter S) and 0.885 is the ink fraction of the 384px art, so
+	   the INK ends up exactly twice the capitals. */
+	--mark-h: calc(1.4 / 0.885 * var(--h1-size));
+	font-size: var(--h1-size);
 	letter-spacing: -0.03em;
 	margin-bottom: 6px;
+}
+
+/* The R of the name is the site mark, one square PNG per palette (see
+   scripts/make-mark-icons.py, which prints the ink fractions). The art carries
+   its own empty border, so the box is grown until the INK reaches the size you
+   want and then pulled back by the ink's own bearings, measured on the SHIPPED
+   file: ink 0.729w x 0.885h, bearing 0.135 left, 0.136 right, 0.060 bottom
+   (which lands the ink on the baseline at any size). 0.70 of --h1-size is the cap
+   height of Space Grotesk 700. The 0.014 term is the right bearing of a real R at
+   this tracking, so the mark leaves the same air before the "i" that the letter R
+   would at any size. Re-measure these fractions if the art is regenerated at a
+   different size: they shift by a few thousandths with the antialiased edge.
+   The slot wraps the two files and the name for one reason: whitespace between
+   inline elements renders as a real word space (~15px at 68px type), and
+   font-size: 0 makes every whitespace run inside zero-width, so no amount of
+   reformatting can push the name away from the mark. The name takes its size
+   back explicitly. Both files sit in the DOM and the theme attribute shows one,
+   which is why the colour is right on the very first paint. */
+.hero h1 .mark-slot {
+	font-size: 0;
+}
+.hero h1 .name {
+	font-size: var(--h1-size);
+}
+.hero h1 .mark {
+	height: var(--mark-h);
+	width: auto;
+	vertical-align: calc(-0.06 * var(--mark-h));
+	margin-left: calc(-0.135 * var(--mark-h));
+	/* the ink's own right bearing, less the air a real R would leave */
+	margin-right: calc(0.014 * var(--h1-size) - 0.136 * var(--mark-h));
+}
+.hero h1 .mark-light {
+	display: none;
+}
+:root[data-theme='light'] .hero h1 .mark-dark {
+	display: none;
+}
+:root[data-theme='light'] .hero h1 .mark-light {
+	display: inline-block;
 }
 
 .hero .role {

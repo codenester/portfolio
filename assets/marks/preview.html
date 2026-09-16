@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>R mark: icon candidates at real sizes</title>
+		<style>
+			:root {
+				--bg-light: #faf6fb;
+				--bg-dark: #150d1c;
+				--ink-light: #191023;
+				--ink-dark: #f4edfa;
+				font-family: 'Manrope', system-ui, sans-serif;
+			}
+			body {
+				margin: 0;
+				padding: 28px;
+				background: #2b2333;
+				color: #f4edfa;
+			}
+			h1 {
+				font-size: 15px;
+				margin: 0 0 4px;
+			}
+			p.lede {
+				margin: 0 0 22px;
+				font-size: 12px;
+				color: #c9bcd6;
+			}
+			.panels {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 18px;
+			}
+			.panel {
+				border-radius: 12px;
+				padding: 18px 20px 22px;
+				color: var(--ink-light);
+			}
+			.panel.light {
+				background: var(--bg-light);
+			}
+			.panel.dark {
+				background: var(--bg-dark);
+				color: var(--ink-dark);
+			}
+			.panel h2 {
+				font-size: 11px;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin: 0 0 14px;
+				opacity: 0.7;
+			}
+			.row {
+				display: flex;
+				align-items: flex-end;
+				gap: 22px;
+				margin-bottom: 16px;
+			}
+			.cell {
+				text-align: center;
+			}
+			.cell img {
+				display: block;
+				margin: 0 auto 6px;
+			}
+			.cell span {
+				font-size: 9px;
+				font-family: ui-monospace, monospace;
+				opacity: 0.6;
+			}
+			.pair {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+				font-size: 11px;
+				opacity: 0.75;
+				margin-top: 10px;
+			}
+			.pair img {
+				border-radius: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>R mark: the shipped icon files at real sizes</h1>
+		<p class="lede">
+			Left panel: what a browser tab holds in LIGHT mode, so icon-light.png. Right panel: DARK mode, so
+			icon-dark.png. Each file is shown on its own theme background at 16, 32, 48 and 128 px, plus a
+			tinted tab strip at the bottom to judge it the way a browser actually draws it.
+		</p>
+
+		<div class="panels">
+			<section class="panel light">
+				<h2>Light mode &middot; icon-light.png</h2>
+				<div class="row">
+					<div class="cell"><img src="/static/icon/icon-light.png" width="16" height="16" /><span>16</span></div>
+					<div class="cell"><img src="/static/icon/icon-light.png" width="32" height="32" /><span>32</span></div>
+					<div class="cell"><img src="/static/icon/icon-light.png" width="48" height="48" /><span>48</span></div>
+					<div class="cell"><img src="/static/icon/icon-light.png" width="128" height="128" /><span>128</span></div>
+				</div>
+				<div class="pair">
+					<span>tab strip</span>
+					<img src="/static/icon/icon-light.png" width="16" height="16" />
+					<span>Rithea Sreng &middot; Software Development Supervisor</span>
+				</div>
+			</section>
+
+			<section class="panel dark">
+				<h2>Dark mode &middot; icon-dark.png</h2>
+				<div class="row">
+					<div class="cell"><img src="/static/icon/icon-dark.png" width="16" height="16" /><span>16</span></div>
+					<div class="cell"><img src="/static/icon/icon-dark.png" width="32" height="32" /><span>32</span></div>
+					<div class="cell"><img src="/static/icon/icon-dark.png" width="48" height="48" /><span>48</span></div>
+					<div class="cell"><img src="/static/icon/icon-dark.png" width="128" height="128" /><span>128</span></div>
+				</div>
+				<div class="pair">
+					<span>tab strip</span>
+					<img src="/static/icon/icon-dark.png" width="16" height="16" />
+					<span>Rithea Sreng &middot; Software Development Supervisor</span>
+				</div>
+			</section>
+		</div>
+
+		<p class="lede" style="margin-top: 22px">
+			Cross check: each mark on the background it was NOT drawn for, to see whether the pair is worth
+			swapping.
+		</p>
+		<div class="panels">
+			<section class="panel light">
+				<h2>icon-dark.png (magenta) sitting on the LIGHT background</h2>
+				<img src="/static/icon/icon-dark.png" width="72" height="72" />
+			</section>
+			<section class="panel dark">
+				<h2>icon-light.png (violet) sitting on the DARK background</h2>
+				<img src="/static/icon/icon-light.png" width="72" height="72" />
+			</section>
+		</div>
+	</body>
+</html>

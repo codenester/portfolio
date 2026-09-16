@@ -27,8 +27,9 @@
 		content="Software development supervisor and full-stack engineer in Phnom Penh, Cambodia. 7+ years building POS, ERP, logistics and e-commerce systems, currently leading the POS platform behind a supermarket group of 20+ stores."
 	/>
 	<meta name="author" content="Rithea Sreng" />
-	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-	<meta name="theme-color" content="#150d1c" />
+	<!-- the theme aware favicon and the theme-color meta both live in src/app.html,
+	     right before the bootstrap script, so the correct values are in place on the
+	     first try instead of being corrected after hydration -->
 	<meta property="og:title" content="Rithea Sreng · Software Development Supervisor" />
 	<meta
 		property="og:description"

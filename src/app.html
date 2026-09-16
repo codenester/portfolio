@@ -4,6 +4,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<!-- The R mark ships once per palette (scripts/make-mark-icons.py): the
+		     bright magenta on the dark background, the deeper violet on the light
+		     one. The link sits HERE, in front of the bootstrap below, so light mode
+		     fetches the right file on the first try and no dark icon ever flashes.
+		     src/lib/theme.ts carries the same pair for the in-page toggle. -->
+		<link rel="icon" id="site-icon" href="/icon/icon-dark.png" type="image/png" sizes="128x128" />
+
+		<!-- The address bar colour, the same idea as the icon: the stored theme decides
+		     it before the first paint, and src/lib/theme.ts keeps it in step on toggle. -->
+		<meta name="theme-color" id="theme-color" content="#150d1c" />
+
 		<!-- Bootstrap: paint the stored theme / corner style before first paint so
 		     there is no flash. Keep in sync with src/lib/theme.ts and
 		     src/lib/ui-shape.ts. A first visit (nothing stored) starts DARK. -->
@@ -14,6 +25,12 @@
 					var t = localStorage.getItem('rithea.theme');
 					if (t !== 'light' && t !== 'dark') t = 'dark';
 					d.dataset.theme = t;
+
+					var icon = document.getElementById('site-icon');
+					if (icon) icon.href = t === 'light' ? '/icon/icon-light.png' : '/icon/icon-dark.png';
+
+					var chrome = document.getElementById('theme-color');
+					if (chrome) chrome.content = t === 'light' ? '#faf6fb' : '#150d1c';
 
 					var s = localStorage.getItem('rithea.shape');
 					d.dataset.shape = s === 'rect' || s === 'pill' || s === 'rounded' ? s : 'rounded';

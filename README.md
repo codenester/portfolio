@@ -29,6 +29,7 @@ Live: https://rithea-sreng.up.railway.app
     npm install
     npm run dev      # dev server on 127.0.0.1:5173
     npm run check    # svelte-check
+    npm run check:icons  # the icon/mark guard: needs Pillow and numpy, finds its own python
     npm run build    # prerender the site into build/
     npm start        # serve build/ on $PORT (default 3000)
 
@@ -51,6 +52,17 @@ always revalidated, and non-GET/HEAD methods are rejected.
   with `node scripts/fetch-fonts.mjs` when a family or weight is added.
 - Icons are [Remix Icon](https://remixicon.com) v4.9.1 (Apache-2.0), inlined at build
   time by `node scripts/build-icons.mjs` into `src/lib/components/Icon.svelte`.
+- The site icon is the R mark, one transparent PNG per palette:
+  `static/icon/icon-dark.png` (magenta) and `static/icon/icon-light.png` (violet).
+  They are generated from the art in `assets/marks/` by
+  `scripts/make-mark-icons.py`, which strips the black background, and checked by
+  `scripts/check-icons.py`. `src/app.html` picks the file for the stored theme before
+  the first paint, and `src/lib/theme.ts` swaps it on the in-page toggle.
+- The R of the name in the hero is that same mark at 384px
+  (`static/icon/mark-dark.png`, `mark-light.png`), so a 3x screen has real pixels for
+  it. Both files sit in the hero heading and `[data-theme]` shows one, so the right
+  colour paints immediately; both are `loading="lazy"`, which keeps the hidden one
+  from downloading at all. `npm run check:icons` guards all of this.
 - Both are local by construction: no CDN, no icon font, so the page makes no third
   party runtime request at all.
 - Copy follows two rules: every claim is traceable to my CV, and prose avoids dashes as punctuation.
