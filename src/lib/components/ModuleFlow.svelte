@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	// "How it fits together" for Technoverse.Echosys: a button in the case card
+	// "How it fits together" for Techniverse.Echosys: a button in the case card
 	// that opens a modal with an animated diagram of the module model.
 	//
 	// The story: modules assemble into a small product, keep arriving until it is
@@ -16,7 +16,7 @@
 
 	type Pt = { x: number; y: number };
 	type Rect = { x: number; y: number; w: number; h: number };
-	type Band = { cards: number[]; frame: Rect; dx: number; dy: number; core: Pt; pulse: Pt };
+	type Band = { cards: number[]; frame: Rect; dx: number; dy: number; core: Pt; pulse: Pt; shrunk?: { frame: Rect; core: Pt; pulse?: Pt } };
 	type Brick = { label: string; note: string; x: number; y: number; w: number; h: number };
 	type Link = { x1: number; y1: number; x2: number; y2: number; arrow: boolean };
 	type Layout = {
@@ -29,7 +29,7 @@
 		small: Rect;
 		big: Rect;
 		bands: Band[];
-		solo: { index: number; dy: number; frame: Rect; core: Pt; pulse: Pt };
+		solo: { index: number; dy: number; frame: Rect; core: Pt; pulse: Pt; note?: Pt };
 		bus: Rect;
 		busLabel: Pt;
 		links: Link[];
@@ -47,7 +47,7 @@
 		].map((b, i) => ({ ...b, x, y: y + i * dy, w, h }));
 
 	const wide: Layout = {
-		vb: [660, 430],
+		vb: [660, 490],
 		cardW: 88,
 		cardH: 48,
 		names: [
@@ -92,7 +92,9 @@
 				dx: 0,
 				dy: 0,
 				core: { x: 295, y: 181 },
-				pulse: { x: 368, y: 62 }
+				pulse: { x: 368, y: 62 },
+				// once Pricing leaves, this boundary closes around Finance alone
+				shrunk: { frame: { x: 282, y: 52, w: 96, h: 98 }, core: { x: 295, y: 130 } }
 			},
 			{
 				cards: [6, 7, 8, 9],
@@ -103,59 +105,59 @@
 				pulse: { x: 570, y: 62 }
 			}
 		],
-		solo: { index: 5, dy: 60, frame: { x: 274, y: 174, w: 112, h: 80 }, core: { x: 295, y: 239 }, pulse: { x: 376, y: 184 } },
-		bus: { x: 60, y: 262, w: 540, h: 22 },
-		busLabel: { x: 78, y: 277 },
+		solo: { index: 5, dy: 110, frame: { x: 274, y: 220, w: 112, h: 80 }, core: { x: 295, y: 285 }, pulse: { x: 376, y: 230 }, note: { x: 396, y: 254 } },
+		bus: { x: 60, y: 320, w: 540, h: 22 },
+		busLabel: { x: 78, y: 335 },
 		links: [
-			{ x1: 180, y1: 258, x2: 180, y2: 204, arrow: true },
-			{ x1: 480, y1: 258, x2: 480, y2: 204, arrow: true },
-			{ x1: 180, y1: 318, x2: 180, y2: 288, arrow: false },
-			{ x1: 330, y1: 318, x2: 330, y2: 288, arrow: false },
-			{ x1: 480, y1: 318, x2: 480, y2: 288, arrow: false }
+			{ x1: 180, y1: 316, x2: 180, y2: 204, arrow: true },
+			{ x1: 480, y1: 316, x2: 480, y2: 204, arrow: true },
+			{ x1: 180, y1: 376, x2: 180, y2: 346, arrow: false },
+			{ x1: 330, y1: 376, x2: 330, y2: 346, arrow: false },
+			{ x1: 480, y1: 376, x2: 480, y2: 346, arrow: false }
 		],
 		bricks: [
-			{ label: 'Shared', note: 'kernel pieces', x: 90, y: 322, w: 150, h: 58 },
-			{ label: 'Auth', note: 'sign-in, tokens', x: 255, y: 322, w: 150, h: 58 },
-			{ label: 'Identity', note: 'who the user is', x: 420, y: 322, w: 150, h: 58 }
+			{ label: 'Shared', note: 'kernel pieces', x: 90, y: 380, w: 150, h: 58 },
+			{ label: 'Auth', note: 'sign-in, tokens', x: 255, y: 380, w: 150, h: 58 },
+			{ label: 'Identity', note: 'who the user is', x: 420, y: 380, w: 150, h: 58 }
 		],
 		labels: { x: 330, y: 30 },
-		caption: { x: 330, y: 410, lines: ['every piece carries these three, which is why it keeps running'] },
+		caption: { x: 330, y: 468, lines: ['every piece carries these three, which is why it keeps running'] },
 		text: { card: 9.5, brick: 14, note: 8.5, cap: 10, bus: 9, label: 15 }
 	};
 
 	const narrow: Layout = {
-		vb: [380, 630],
+		vb: [380, 660],
 		cardW: 160,
 		cardH: 46,
 		names: ['Sales', 'Inventory', 'Finance', 'HR', 'Procurement', 'Logistics'],
 		cards: [
-			{ x: 22, y: 66 },
-			{ x: 198, y: 66 },
-			{ x: 22, y: 126 },
-			{ x: 198, y: 126 },
-			{ x: 22, y: 186 },
-			{ x: 198, y: 186 }
+			{ x: 22, y: 82 },
+			{ x: 198, y: 82 },
+			{ x: 22, y: 142 },
+			{ x: 198, y: 142 },
+			{ x: 22, y: 202 },
+			{ x: 198, y: 202 }
 		],
 		smallCards: [0, 1],
-		small: { x: 12, y: 58, w: 356, h: 62 },
-		big: { x: 12, y: 58, w: 356, h: 186 },
+		small: { x: 12, y: 74, w: 356, h: 62 },
+		big: { x: 12, y: 74, w: 356, h: 186 },
 		bands: [
-			{ cards: [0, 1], frame: { x: 12, y: 58, w: 356, h: 74 }, dx: 0, dy: -30, core: { x: 22, y: 116 }, pulse: { x: 358, y: 70 } },
-			{ cards: [2, 3], frame: { x: 12, y: 118, w: 356, h: 74 }, dx: 0, dy: 0, core: { x: 22, y: 176 }, pulse: { x: 358, y: 130 } },
-			{ cards: [4, 5], frame: { x: 12, y: 178, w: 356, h: 74 }, dx: 0, dy: 30, core: { x: 22, y: 236 }, pulse: { x: 358, y: 190 } }
+			{ cards: [0, 1], frame: { x: 12, y: 74, w: 356, h: 74 }, dx: 0, dy: -30, core: { x: 22, y: 132 }, pulse: { x: 358, y: 86 } },
+			{ cards: [2, 3], frame: { x: 12, y: 134, w: 356, h: 74 }, dx: 0, dy: 0, core: { x: 22, y: 192 }, pulse: { x: 358, y: 146 } },
+			{ cards: [4, 5], frame: { x: 12, y: 194, w: 356, h: 74 }, dx: 0, dy: 30, core: { x: 22, y: 252 }, pulse: { x: 358, y: 206 }, shrunk: { frame: { x: 12, y: 194, w: 180, h: 74 }, core: { x: 22, y: 252 }, pulse: { x: 180, y: 206 } } }
 		],
-		solo: { index: 5, dy: 110, frame: { x: 188, y: 288, w: 182, h: 76 }, core: { x: 198, y: 348 }, pulse: { x: 362, y: 298 } },
-		bus: { x: 40, y: 384, w: 300, h: 20 },
-		busLabel: { x: 52, y: 398 },
+		solo: { index: 5, dy: 136, frame: { x: 188, y: 320, w: 182, h: 80 }, core: { x: 198, y: 386 }, pulse: { x: 362, y: 330 } },
+		bus: { x: 40, y: 414, w: 300, h: 20 },
+		busLabel: { x: 52, y: 428 },
 		links: [
-			{ x1: 60, y1: 380, x2: 60, y2: 250, arrow: true },
-			{ x1: 100, y1: 420, x2: 100, y2: 408, arrow: false },
-			{ x1: 190, y1: 420, x2: 190, y2: 408, arrow: false },
-			{ x1: 280, y1: 420, x2: 280, y2: 408, arrow: false }
+			{ x1: 60, y1: 410, x2: 60, y2: 304, arrow: true },
+			{ x1: 100, y1: 450, x2: 100, y2: 438, arrow: false },
+			{ x1: 190, y1: 450, x2: 190, y2: 438, arrow: false },
+			{ x1: 280, y1: 450, x2: 280, y2: 438, arrow: false }
 		],
-		bricks: bricks(20, 420, 340, 48, 56),
+		bricks: bricks(20, 450, 340, 48, 56),
 		labels: { x: 190, y: 26 },
-		caption: { x: 190, y: 604, lines: ['every piece carries these three,', 'which is why it keeps running'] },
+		caption: { x: 190, y: 638, lines: ['every piece carries these three,', 'which is why it keeps running'] },
 		text: { card: 13, brick: 15, note: 10, cap: 10.5, bus: 10, label: 14 }
 	};
 
@@ -270,9 +272,18 @@
 
 					<!-- the pieces, drawn only while split -->
 					{#each L.bands as b, i (i)}
-						<g class="piece" style={`--sx:${b.dx}px; --sy:${b.dy}px`}>
+						<g
+							class="piece"
+							class:shrink={!!b.shrunk}
+							style={`--sx:${b.dx}px; --sy:${b.dy}px; --ctx:${b.shrunk ? b.shrunk.core.x : b.core.x}px; --cty:${b.shrunk ? b.shrunk.core.y : b.core.y}px; --ctx0:${b.core.x}px; --cty0:${b.core.y}px; --ppx:${(b.shrunk && b.shrunk.pulse ? b.shrunk.pulse.x : b.pulse.x) - b.pulse.x}px; --ppy:${(b.shrunk && b.shrunk.pulse ? b.shrunk.pulse.y : b.pulse.y) - b.pulse.y}px`}
+						>
 							<rect class="frame" x={b.frame.x} y={b.frame.y} width={b.frame.w} height={b.frame.h} rx="14" />
-							<circle class="pulse" cx={b.pulse.x} cy={b.pulse.y} r="3.4" />
+							{#if b.shrunk}
+								<rect class="frame shrunk" x={b.shrunk.frame.x} y={b.shrunk.frame.y} width={b.shrunk.frame.w} height={b.shrunk.frame.h} rx="14" />
+							{/if}
+							<g class="pulse-wrap">
+								<circle class="pulse" cx={b.pulse.x} cy={b.pulse.y} r="3.4" />
+							</g>
 							<g class="core" transform={`translate(${b.core.x}, ${b.core.y})`}>
 								{#each core as c (c)}
 									<rect x={c * 25} y="0" width="20" height="9" rx="3" />
@@ -290,6 +301,9 @@
 								<rect x={c * 25} y="0" width="20" height="9" rx="3" />
 							{/each}
 						</g>
+						{#if L.solo.note}
+							<text class="solo-note" x={L.solo.note.x} y={L.solo.note.y}>runs on its own</text>
+						{/if}
 					</g>
 
 					<!-- modules: cells of the form, and of every piece -->
@@ -538,7 +552,7 @@
 	/* 3.6s  the rest arrive, full platform      card-in / frame-draw      */
 	/* 7.0s  split, pieces drift apart           drift                     */
 	/* 8.4s  each piece shows its own core       fade-in                   */
-	/* 9.6s  one module left standing alone      drop / frame-draw         */
+	/* 9.6s  one module left, boundary closes   drop / frame-draw / shrink  */
 	/* 13.4s everything merges back              rejoin / rise             */
 	/* 16.6s fade, loop                                                    */
 	/*                                                                     */
@@ -663,6 +677,28 @@
 			fade-out 400ms ease 13400ms forwards;
 	}
 
+	/* a piece that lost its module: the old boundary fades, a smaller one draws
+	   around what is left, and the core and the pulse move in with it */
+	.piece.shrink > .frame:not(.shrunk) {
+		animation:
+			frame-draw 600ms ease 7100ms both,
+			fade-out 300ms ease 9900ms forwards;
+	}
+	.piece.shrink > .frame.shrunk {
+		animation:
+			frame-draw 600ms ease 10000ms both,
+			fade-out 400ms ease 13600ms forwards;
+	}
+	.piece.shrink .core {
+		animation:
+			fade-in 400ms ease 8400ms both,
+			core-lift 600ms cubic-bezier(0.4, 0, 0.2, 1) 9900ms forwards,
+			fade-out 400ms ease 13400ms forwards;
+	}
+	.piece.shrink .pulse-wrap {
+		animation: pulse-move 600ms cubic-bezier(0.4, 0, 0.2, 1) 9900ms forwards;
+	}
+
 	/* one module left standing alone */
 	.solo-frame {
 		animation:
@@ -680,6 +716,12 @@
 		animation:
 			fade-in 400ms ease 10800ms both,
 			fade-out 400ms ease 13400ms forwards;
+	}
+
+	/* the claim the detached module makes: it left the product and it still runs */
+	.solo-note {
+		fill: var(--brand-ink);
+		letter-spacing: 0.12em;
 	}
 
 	/* modules: in, apart with their piece, and back together */
@@ -812,6 +854,26 @@
 		}
 	}
 
+	/* the core chips of a piece move up as its boundary closes */
+	@keyframes core-lift {
+		from {
+			transform: translate(var(--ctx0), var(--cty0));
+		}
+		to {
+			transform: translate(var(--ctx), var(--cty));
+		}
+	}
+
+	/* the piece's pulse slides to the corner of the smaller boundary */
+	@keyframes pulse-move {
+		from {
+			transform: translate(0, 0);
+		}
+		to {
+			transform: translate(var(--ppx, 0px), var(--ppy, 0px));
+		}
+	}
+
 	@keyframes pulse {
 		0%,
 		100% {
@@ -868,6 +930,11 @@
 		.body,
 		.solo-frame,
 		.solo-core {
+			animation: none !important;
+			opacity: 0 !important;
+		}
+		/* no motion means no detach, so the boundary stays as it was */
+		.piece.shrink > .frame.shrunk {
 			animation: none !important;
 			opacity: 0 !important;
 		}
