@@ -170,18 +170,20 @@ export const cases: CaseStudy[] = [
 		period: 'Ongoing',
 		role: 'Everything: design, build, decisions',
 		problem:
-			'Business software usually arrives as one fixed bundle: you take the modules the vendor decided on, and every module is welded to the rest. After years of inherited ERPs I wanted the opposite, so I started from a different question. Could a business pick only the modules it actually needs, have each of those modules run on its own, and build each one in whatever language its own team works in?',
+			'Business software usually arrives as one fixed bundle: you take the modules the vendor decided on, and every module is welded to the rest. After years of inherited ERPs I wanted the opposite, so I started from a different question. Could a business pick only the modules it actually needs, have each of those modules run on its own, and have every module exist in each language a team might work in, so a module is never locked to one stack?',
 		approach: [
 			'Modules are the unit of delivery, not the product. Each module is runnable by itself, so one can ship alone and more can be added later without a rewrite.',
 			'A complete product is assembled from modules. Pick the ones a business needs and they form the platform, the way bricks form a model.',
 			'Only three modules are foundational: Shared, Auth and Identity. Every other module depends on those, and on nothing else.',
 			'Modules never reach into one another. They talk through integration events, so any module can be replaced, upgraded or left out.',
 			'Shared is one specification, not one library: integration events, the result and error types, the entity base and the permission catalog are defined once and implemented per language, so the platform never belongs to a single stack.',
-			'A product is assembled two ways, decided by the modules chosen. Modules in the same language link into one process and ship as a single deployable. Modules in different languages run as services and are assembled over the wire. The same module can be assembled either way, unchanged.',
-			'In scope for module authors: C#, Go, Kotlin, Java and Node.js. Out of scope: Rust, C and C++, where memory management stays the implementer’s job, and Ruby and PHP.'
+			'A product is assembled two ways, decided by the implementations chosen. Implementations in the host’s language link into one process and ship as a single deployable. An implementation in another language runs as a service and is assembled over the wire. The same module can be assembled either way, unchanged, and in either language.',
+			'Every module is delivered once per supported language, named module plus language: shared-net, shared-go, shared-java and shared-kotlin, then the same four for Auth, Identity and every business module. What a product chooses is which implementation of each module it runs, and that choice lives in its assembly manifest, never in the module.',
+			'All implementations of one module pass the same conformance suite and the same acceptance tests, so they behave identically. Behaving identically is the acceptance criterion, not a promise.',
+			'Four language tokens are supported: net (C# on .NET, the reference), go, java and kotlin. Out of scope: Rust, C and C++, where memory management stays the implementer’s job, and Ruby and PHP. Node.js is used for the front end and the tooling, not for modules.'
 		],
-		result: 'The target: a reference implementation where the same platform can be a single small tool or a full business platform, decided by which modules are switched on, and where a module can be written in the language its team works in.',
-		stack: ['.NET 10', 'Go', 'gRPC', 'PostgreSQL', 'SvelteKit', 'Composable modules'],
+		result: 'The target: a reference implementation where the same platform can be a single small tool or a full business platform, decided by which modules are switched on, and where every module exists in each supported language, so a product picks the implementation of each module it runs instead of being locked to one stack.',
+		stack: ['.NET 10', 'Go', 'Java', 'Kotlin', 'gRPC', 'PostgreSQL', 'SvelteKit', 'Composable modules'],
 		explore: {
 			cta: 'See how the modules fit together',
 			title: 'Techniverse.Echosys: how a product is assembled',
