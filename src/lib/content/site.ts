@@ -15,7 +15,7 @@ export const profile = {
 	nameLatin: 'Rithea Sreng',
 	role: 'Software Development Supervisor · Full-Stack Engineer',
 	eyebrow: 'Phnom Penh, Cambodia · available for a conversation',
-	pitch: 'I build and run the systems a business actually depends on. Seven-plus years across retail, ERP, logistics and e-commerce in Cambodia, currently leading web development for the POS platform behind a supermarket group of 20+ stores, a system that runs 24 hours a day. I own it end to end: architecture, delivery, releases, production support, and the developers who build it.',
+	pitch: 'I build and run the systems a business actually depends on. Six years across retail, ERP, logistics and e-commerce in Cambodia, currently leading web development for the POS platform behind a supermarket group of 20+ stores, a system that runs 24 hours a day. I own it end to end: architecture, delivery, releases, production support, and the developers who build it.',
 	email: 'codenester.dev@gmail.com',
 	phone: '+855 69 272 705',
 	phoneHref: '+85569272705',
@@ -125,8 +125,8 @@ export const cases: CaseStudy[] = [
 		kind: 'ERP & POS · multi-client',
 		title: 'One ERP + POS platform, reshaped for every client',
 		org: 'Biztools Enterprise Solutions',
-		period: 'Feb 2022 – Jun 2025',
-		role: 'Full-Stack Developer',
+		period: 'Feb 2023 – Jun 2025',
+		role: 'Software Engineer',
 		problem: 'Every client wanted the same platform to behave differently: custom requirements across industries, running on two generations of the stack at once.',
 		approach: [
 			'Built, maintained and enhanced ERP and POS systems to each client’s requirements.',
@@ -151,8 +151,8 @@ export const cases: CaseStudy[] = [
 		kind: 'Logistics & e-commerce · 0 → 1',
 		title: 'Logistics and e-commerce systems built from zero',
 		org: 'One Click Solution',
-		period: 'Nov 2019 – Jan 2022',
-		role: 'Full-Stack Developer & Team Lead',
+		period: 'Nov 2020 – Feb 2023 · Part time',
+		role: 'Full-Stack Developer & Project leader',
 		problem: 'No system existed for ordering, fulfilment and delivery: both had to be built while the business was already running.',
 		approach: [
 			'Built the logistics system and the e-commerce system from the ground up, covering ordering, fulfilment and delivery workflows.',
@@ -216,8 +216,8 @@ export const jobs: Job[] = [
 	},
 	{
 		org: 'Biztools Enterprise Solutions',
-		role: 'Full-Stack Developer',
-		period: 'Feb 2022 – Jun 2025',
+		role: 'Software Engineer',
+		period: 'Feb 2023 – Jun 2025',
 		points: [
 			'Built, maintained and enhanced ERP and POS systems tailored to each client’s requirements across industries.',
 			'Delivered a container-shipment tracking system and a customer loyalty program on the same platform.',
@@ -227,8 +227,8 @@ export const jobs: Job[] = [
 	},
 	{
 		org: 'One Click Solution',
-		role: 'Full-Stack Developer & Team Lead',
-		period: 'Nov 2019 – Jan 2022',
+		role: 'Full-Stack Developer & Project leader',
+		period: 'Nov 2020 – Feb 2023 · Part time',
 		points: [
 			'Built a logistics system and an e-commerce system from the ground up, covering ordering, fulfilment and delivery workflows.',
 			'Created and maintained reusable internal libraries adopted across multiple projects, cutting duplication and speeding up later builds.',
@@ -243,9 +243,9 @@ export const jobs: Job[] = [
 /* ------------------------------------------------------------------ */
 
 export const about: { paragraphs: string[]; caption: string } = {
-	caption: 'Phnom Penh · working on retail platforms since 2019',
+	caption: 'Phnom Penh · working on retail platforms since 2020',
 	paragraphs: [
-		'I started in 2019 by building a logistics system and an e-commerce platform from zero, spent the next five years on ERP and POS work for a roster of clients, and now supervise web development for a POS platform that runs in more than twenty supermarkets every day of the week.',
+		'I started in 2020 by building a logistics system and an e-commerce platform from zero, spent the years since on ERP and POS work for a roster of clients, and now supervise web development for a POS platform that runs in more than twenty supermarkets every day of the week.',
 		'Most of what I know came from being the person who had to make it work: owning releases, taking the call when a store goes down outside hours, and reviewing the code the team writes.',
 		'I studied computer science at the National Polytechnic Institute of Cambodia and I am filling in the management side now with Google’s project management and Agile certifications.'
 	]
@@ -366,12 +366,6 @@ export const education: { title: string; org: string; year: string; icon: string
 		org: 'National Polytechnic Institute of Cambodia',
 		year: '2019 – 2022',
 		icon: 'graduation'
-	},
-	{
-		title: 'High School Diploma',
-		org: 'Bak Touk High School',
-		year: '2014 – 2018',
-		icon: 'book'
 	}
 ];
 
