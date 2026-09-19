@@ -15,7 +15,7 @@ export const profile = {
 	nameLatin: 'Rithea Sreng',
 	role: 'Software Development Supervisor · Full-Stack Engineer',
 	eyebrow: 'Phnom Penh, Cambodia · available for a conversation',
-	pitch: 'I build and run the systems a business actually depends on. Six years across retail, ERP, logistics and e-commerce in Cambodia, currently leading web development for the POS platform behind a supermarket group of 20+ stores, a system that runs 24 hours a day. I own it end to end: architecture, delivery, releases, production support, and the developers who build it.',
+	pitch: 'I build and run the systems a business actually depends on. More than seven years across retail, ERP, logistics and e-commerce in Cambodia, currently leading web development for the POS platform behind a supermarket group of 20+ stores, a system that runs 24 hours a day. I own it end to end: architecture, delivery, releases, production support, and the developers who build it.',
 	email: 'codenester.dev@gmail.com',
 	phone: '+855 69 272 705',
 	phoneHref: '+85569272705',
@@ -243,9 +243,9 @@ export const jobs: Job[] = [
 /* ------------------------------------------------------------------ */
 
 export const about: { paragraphs: string[]; caption: string } = {
-	caption: 'Phnom Penh · working on retail platforms since 2020',
+	caption: 'Phnom Penh · working on retail platforms since 2019',
 	paragraphs: [
-		'I started in 2020 by building a logistics system and an e-commerce platform from zero, spent the years since on ERP and POS work for a roster of clients, and now supervise web development for a POS platform that runs in more than twenty supermarkets every day of the week.',
+		'I started in 2019 by building a logistics system and an e-commerce platform from zero, spent the years since on ERP and POS work for a roster of clients, and now supervise web development for a POS platform that runs in more than twenty supermarkets every day of the week.',
 		'Most of what I know came from being the person who had to make it work: owning releases, taking the call when a store goes down outside hours, and reviewing the code the team writes.',
 		'I studied computer science at the National Polytechnic Institute of Cambodia and I am filling in the management side now with Google’s project management and Agile certifications.'
 	]
