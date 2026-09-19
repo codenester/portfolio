@@ -292,8 +292,11 @@ export const skillGroups: { label: string; items: string[]; icon: string }[] = [
 			'.NET Framework 4.x',
 			'.NET Core / .NET',
 			'REST API design',
+			'gRPC',
+			'GraphQL',
 			'Entity Framework Core',
-			'SignalR (real-time)'
+			'SignalR (real-time)',
+			'WebSocket (real-time)'
 		]
 	},
 	{
@@ -319,7 +322,12 @@ export const skillGroups: { label: string; items: string[]; icon: string }[] = [
 		items: [
 			'System design & architecture',
 			'Database design',
+			'Microservices & modular monoliths',
+			'Apache Kafka (event streaming)',
 			'Deployment & CI/CD',
+			'Docker',
+			'Linux & IIS hosting',
+			'Firebase',
 			'SAP ERP integration',
 			'Offline-first / sync design'
 		]
