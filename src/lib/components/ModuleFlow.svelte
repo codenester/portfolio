@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	// "How it fits together" for Techniverse.Echosys: a button in the case card
+	// "How it fits together" for Techniverse.Ecosys: a button in the case card
 	// that opens a modal with an animated diagram of the module model.
 	//
 	// The story: modules assemble into a small product, keep arriving until it is

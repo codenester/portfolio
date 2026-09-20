@@ -163,9 +163,9 @@ export const cases: CaseStudy[] = [
 		stack: ['C#', '.NET Framework 4.x', 'SignalR', 'SQL Server', 'JavaScript']
 	},
 	{
-		id: 'techniverse-echosys',
+		id: 'techniverse-ecosys',
 		kind: 'Personal project · modular platform · in progress',
-		title: 'Techniverse.Echosys: a platform you assemble from modules',
+		title: 'Techniverse.Ecosys: a platform you assemble from modules',
 		org: 'Own project',
 		period: 'Ongoing',
 		role: 'Everything: design, build, decisions',
@@ -178,15 +178,15 @@ export const cases: CaseStudy[] = [
 			'Modules never reach into one another. They talk through integration events, so any module can be replaced, upgraded or left out.',
 			'Shared is one specification, not one library: integration events, the result and error types, the entity base and the permission catalog are defined once and implemented per language, so the platform never belongs to a single stack.',
 			'A product is assembled two ways, decided by the implementations chosen. Implementations in the host’s language link into one process and ship as a single deployable. An implementation in another language runs as a service and is assembled over the wire. The same module can be assembled either way, unchanged, and in either language.',
-			'Every module is delivered once per supported language, named module plus language: shared-net, shared-go, shared-java and shared-kotlin, then the same four for Auth, Identity and every business module. What a product chooses is which implementation of each module it runs, and that choice lives in its assembly manifest, never in the module.',
-			'All implementations of one module pass the same conformance suite and the same acceptance tests, so they behave identically. Behaving identically is the acceptance criterion, not a promise.',
-			'Four language tokens are supported: net (C# on .NET, the reference), go, java and kotlin. Out of scope: Rust, C and C++, where memory management stays the implementer’s job, and Ruby and PHP. Node.js is used for the front end and the tooling, not for modules.'
+			'The rule is one implementation per supported language, named module plus language: shared-net, shared-go, shared-java and shared-kotlin, then the same four for Auth, Identity and every business module. What a product chooses is which implementation of each module it runs, and that choice lives in its assembly manifest, never in the module. One implementation exists today, the reference one in C# on .NET, and the first product is being built on it.',
+			'All implementations of one module are required to pass the same conformance suite and the same acceptance tests, so they behave identically. Behaving identically is the acceptance criterion, and it is required rather than promised: with a single implementation there is nothing yet to compare against, and the second implementation is what proves the rule.',
+			'Four language tokens are accepted by the assembly rule: net (C# on .NET, the reference and the only one written so far), go, java and kotlin. Out of scope: Rust, C and C++, where memory management stays the implementer’s job, and Ruby and PHP. Node.js is used for the front end and the tooling, not for modules.'
 		],
-		result: 'The target: a reference implementation where the same platform can be a single small tool or a full business platform, decided by which modules are switched on, and where every module exists in each supported language, so a product picks the implementation of each module it runs instead of being locked to one stack.',
+		result: 'The target: a reference implementation where the same platform can be a single small tool or a full business platform, decided by which modules are switched on, and where every module exists in each supported language, so a product picks the implementation of each module it runs instead of being locked to one stack. What exists today is the first implementation and the first product being built to that rule. The second language is what proves the rule, and it follows the first finished product rather than running beside it.',
 		stack: ['.NET 10', 'Go', 'Java', 'Kotlin', 'gRPC', 'PostgreSQL', 'SvelteKit', 'Composable modules'],
 		explore: {
 			cta: 'See how the modules fit together',
-			title: 'Techniverse.Echosys: how a product is assembled',
+			title: 'Techniverse.Ecosys: how a product is assembled',
 			lead: 'The platform is one living system: assembled, it runs as one. Split it, and every piece keeps running on its own, because each piece carries its own Shared, Auth and Identity.'
 		}
 	}
