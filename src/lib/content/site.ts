@@ -364,7 +364,7 @@ export const education: { title: string; org: string; year: string; icon: string
 	{
 		title: 'Google Project Management Professional Certificate',
 		org: 'Coursera · seven courses, from initiation through Agile and the capstone',
-		year: '2026',
+		year: 'Sep 2026',
 		icon: 'cert',
 		url: 'https://www.coursera.org/account/accomplishments/specialization/8SM29XFB8QF8'
 	},
