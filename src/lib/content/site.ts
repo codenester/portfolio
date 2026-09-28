@@ -251,7 +251,7 @@ export const about: { paragraphs: string[]; caption: string } = {
 	paragraphs: [
 		'I started in 2019 by building a logistics system and an e-commerce platform from zero, spent the years since on ERP and POS work for a roster of clients, and now supervise web development for a POS platform that runs in more than twenty supermarkets every day of the week.',
 		'Most of what I know came from being the person who had to make it work: owning releases, taking the call when a store goes down outside hours, and reviewing the code the team writes.',
-		'I studied computer science at the National Polytechnic Institute of Cambodia and I am filling in the management side now with Google’s project management and Agile certifications.'
+		'I studied computer science at the National Polytechnic Institute of Cambodia and finished Google’s Project Management Professional Certificate, seven courses that cover the full lifecycle from initiation through Agile and the capstone.'
 	]
 };
 
@@ -360,18 +360,13 @@ export const skillGroups: { label: string; items: string[]; icon: string }[] = [
 	}
 ];
 
-export const education: { title: string; org: string; year: string; icon: string }[] = [
+export const education: { title: string; org: string; year: string; icon: string; url?: string }[] = [
 	{
-		title: 'Google Project Management Certificate',
-		org: 'Coursera · full project-management lifecycle',
-		year: 'In progress',
-		icon: 'cert'
-	},
-	{
-		title: 'Google Agile Project Management Certificate',
-		org: 'Coursera · Agile & Scrum',
+		title: 'Google Project Management Professional Certificate',
+		org: 'Coursera · seven courses, from initiation through Agile and the capstone',
 		year: '2026',
-		icon: 'award'
+		icon: 'cert',
+		url: 'https://www.coursera.org/account/accomplishments/specialization/8SM29XFB8QF8'
 	},
 	{
 		title: 'Bachelor of Computer Science',

@@ -14,7 +14,7 @@
 					<p class="k"><Icon name={item.icon} size={15} />{item.title}</p>
 					<div class="v">
 						<p>{item.org}</p>
-						<p class="mono-line">{item.year}</p>
+						<p class="mono-line">{item.year}{#if item.url} · <a href={item.url} target="_blank" rel="noopener">Credential</a>{/if}</p>
 					</div>
 				</div>
 			{/each}
