@@ -396,9 +396,8 @@ export const ui = {
 		home: 'Home',
 		work: 'Work',
 		experience: 'Experience',
-		delivery: 'Delivery',
-		decisions: 'Decisions',
-		built: 'This site',
+		delivery: 'How I work',
+
 		skills: 'Skills',
 		education: 'Education',
 		contact: 'Contact'

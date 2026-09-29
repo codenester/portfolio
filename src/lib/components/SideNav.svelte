@@ -13,8 +13,6 @@
 		{ id: 'work', label: ui.nav.work, icon: 'work' },
 		{ id: 'experience', label: ui.nav.experience, icon: 'briefcase' },
 		{ id: 'delivery', label: ui.nav.delivery, icon: 'flow' },
-		{ id: 'decisions', label: ui.nav.decisions, icon: 'compass' },
-		{ id: 'built', label: ui.nav.built, icon: 'layout' },
 		{ id: 'skills', label: ui.nav.skills, icon: 'code' },
 		{ id: 'education', label: ui.nav.education, icon: 'cert' },
 		{ id: 'contact', label: ui.nav.contact, icon: 'chat' }
