@@ -85,7 +85,7 @@ export const cases: CaseStudy[] = [
 			'Gave each store its own database, and added a shared central database only for data that must be chain-wide: vouchers and customers.',
 			'Put a distribution gateway in front of the platform so every request is routed to the right store.'
 		],
-		result: 'The chain grew from 10 to 20+ stores on this design. The platform runs 24/7 and underpins roughly US$5M in annual revenue.',
+		result: 'The chain grew from 10 to 20+ stores on this design. The platform runs 24/7 and underpins more than US$20M in annual sales.',
 		stack: ['C#', '.NET Core', 'SQL Server', 'PostgreSQL', 'Redis', 'nginx', 'IIS']
 	},
 	{
