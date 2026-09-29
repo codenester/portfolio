@@ -70,9 +70,9 @@
 	--muted: #a495b3;
 	--border: rgba(244, 237, 250, 0.13);
 	--border-strong: rgba(244, 237, 250, 0.24);
-	--brand: #a855f7;
-	--brand-strong: #d946ef;
-	--brand-ink: #e6c4ff;
+	--brand: #d755f7;
+	--brand-strong: #ef46d4;
+	--brand-ink: #f7c4ff;
 	--art-faint: color-mix(in srgb, var(--brand) 26%, transparent);
 	--art-fainter: color-mix(in srgb, var(--brand) 13%, transparent);
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -82,12 +82,29 @@
 	--radius-control: 0;
 	--radius-surface: 0;
 	--radius-pill: 0;
+	--nav-dot-w: 8px;
+	--nav-dot-h: 8px;
+	--nav-dot-radius: 0;
 }
 
 :root[data-shape='pill'] {
 	--radius-control: 999px;
 	--radius-surface: 24px;
 	--radius-pill: 999px;
+	--nav-dot-w: 8px;
+	--nav-dot-h: 8px;
+	--nav-dot-radius: 50%;
+}
+
+/* the middle "rounded" state is always written explicitly as data-shape=
+   "rounded" (see src/app.html's bootstrap script and ui-shape.ts), never left
+   as a bare <html> with no attribute, so it needs its own rule here rather
+   than a :not([data-shape]) fallback. A VERTICAL pill: taller than wide,
+   the opposite axis from pill mode's plain circle. */
+:root[data-shape='rounded'] {
+	--nav-dot-w: 8px;
+	--nav-dot-h: 15px;
+	--nav-dot-radius: 4px;
 }
 
 /* ------------------------------------------------------------------ */
@@ -671,6 +688,77 @@ h2 > svg {
 .case:first-of-type {
 	border-top: 0;
 	padding-top: 0;
+}
+
+/* case terminal chrome — echoes the hero's spec.yml panel so a case study
+   reads as "a file worth opening", not another card in a grid. Spans both
+   grid columns; everything else in .case is unchanged. */
+.case-term {
+	grid-column: 1 / -1;
+	border: 1px solid var(--border);
+	/* --radius-surface, not --radius-control: this is a content panel, and
+	   every other panel on the site (.spec, .contact-card, the photo
+	   wrappers) uses the surface token. A control token resolves to 999px
+	   in pill mode, which turned this wide, short panel into a full stadium
+	   whose semicircular ends swept into the dots and the prompt text. */
+	border-radius: var(--radius-surface);
+	background: var(--surface-2);
+	overflow: hidden;
+	margin-bottom: clamp(14px, 2vw, 20px);
+}
+
+.term-bar {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 12px;
+	border-bottom: 1px solid var(--border);
+}
+
+.term-bar .dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background: var(--border-strong);
+	flex: none;
+}
+
+.term-bar .dot:first-child {
+	background: var(--brand);
+}
+
+.term-file {
+	margin-left: 6px;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	color: var(--muted);
+}
+
+.term-prompt {
+	padding: 9px 14px;
+	font-family: var(--font-mono);
+	font-size: 12.5px;
+	color: var(--brand-ink);
+	overflow-wrap: anywhere;
+}
+
+.term-user {
+	color: var(--brand);
+}
+
+.term-dim {
+	color: var(--muted);
+}
+
+@media (max-width: 480px) {
+	/* the full "rithea@sreng:~/work$ cat 0N-name.log" prompt wraps on a
+	   narrow phone; the prefix is decoration, so hide it and keep the part
+	   that actually names the file. */
+	.term-user,
+	.term-dim {
+		display: none;
+	}
 }
 
 .case .kind {

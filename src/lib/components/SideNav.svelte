@@ -101,12 +101,12 @@
 
 	.side-nav .dot {
 		display: block;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
+		width: var(--nav-dot-w, 8px);
+		height: var(--nav-dot-h, 8px);
+		border-radius: var(--nav-dot-radius, 4px);
 		background: var(--brand);
 		opacity: 0.45;
-		transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+		transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s, width 0.18s, height 0.18s, border-radius 0.18s;
 	}
 
 	.side-nav a:hover .dot,
@@ -164,8 +164,8 @@
 			right: 7px;
 		}
 		.side-nav .dot {
-			width: 6px;
-			height: 6px;
+			width: calc(var(--nav-dot-w, 8px) * 0.75);
+			height: calc(var(--nav-dot-h, 8px) * 0.75);
 		}
 		.side-nav a {
 			padding: 8px 4px;
