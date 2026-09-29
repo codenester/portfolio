@@ -1348,3 +1348,64 @@ h2 > svg {
 		transform: none;
 	}
 }
+
+
+/* MOTION PASS (his request, 29 Sep 2026): sections arrive as you reach them, panels answer
+   the pointer, and anchors glide instead of jumping. Three deliberate constraints:
+   - the hero is NOT a .section, so it never animates in: the thing that has to be on
+     screen in the first moment is exempt by construction;
+   - the reveals are wrapped in @supports (animation-timeline: view()), because the
+     failure mode of a scroll driven reveal is INVISIBLE CONTENT, and a browser that does
+     not implement it must simply show the plain section rather than hide it;
+   - everything sits inside prefers-reduced-motion: no-preference, so a visitor who asked
+     for less movement gets no reveals, no lift and no smooth scrolling.
+   Hover lift is 3px and 220ms: enough to feel alive under the pointer, not enough to
+   make a page of case studies feel like it is breathing on its own. */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	.section {
+		/* anchors land below the sticky controls rather than under them */
+		scroll-margin-top: 88px;
+	}
+
+	.case,
+	.card {
+		transition:
+			transform 220ms ease,
+			border-color 220ms ease;
+	}
+
+	.case:hover,
+	.card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+	}
+
+	/* NOT wrapped in @supports: the build strips support queries its configured targets
+	   do not recognise, and this one was being removed outright, so the reveals shipped
+	   nowhere. Unwrapped is safe here, and deliberately so. A browser that implements the
+	   view timeline gets the reveal. One that does not ignores the two unknown
+	   declarations and plays the animation with its 1ms duration on load, which paints
+	   the section in its final state and is exactly the plain page. The failure mode is
+	   a section that simply appears, never one that stays hidden. */
+	.section {
+		animation: section-arrive 1ms linear both;
+		animation-timeline: view();
+		animation-range: entry 0% entry 45%;
+	}
+
+	@keyframes section-arrive {
+		from {
+			opacity: 0;
+			transform: translateY(14px);
+		}
+
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+}

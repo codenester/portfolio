@@ -396,6 +396,9 @@ export const ui = {
 		home: 'Home',
 		work: 'Work',
 		experience: 'Experience',
+		delivery: 'Delivery',
+		decisions: 'Decisions',
+		built: 'This site',
 		skills: 'Skills',
 		education: 'Education',
 		contact: 'Contact'
@@ -435,7 +438,6 @@ export const ui = {
 		title: 'Let’s talk',
 		lead: 'Open to conversations about development supervision, platform ownership and full-stack work, in Phnom Penh or remote.',
 		cv: 'Download CV (PDF)',
-		cvDocx: 'Download CV (DOCX)',
 		linkedin: 'LinkedIn',
 		phone: 'Phone',
 		email: 'Email',
@@ -449,4 +451,129 @@ export const ui = {
 		shape: 'Switch corner style',
 		menu: 'Menu'
 	}
+};
+
+/**
+ * The four numbers that answer the question a manager actually has: what does this person
+ * run, and how big is it. Every figure here is one he has confirmed; there is no estimate,
+ * no rounded claim and no unmeasured percentage, which is why the band is short.
+ */
+export const stats: { value: string; label: string; note: string }[] = [
+	{
+		value: '20+',
+		label: 'stores',
+		note: 'running the platform I own'
+	},
+	{
+		value: '24 hours',
+		label: 'a day',
+		note: 'the chain trades on it'
+	},
+	{
+		value: '1 to 3',
+		label: 'releases a month',
+		note: 'each rolled out to every store'
+	},
+	{
+		value: 'US$20M+',
+		label: 'in annual sales',
+		note: 'carried by that platform, at the chain’s best year'
+	}
+];
+
+/**
+ * How the work runs, as opposed to what was built. This is the section a hiring manager
+ * reads for the job they are filling: the roadmap, the review habit, the release train,
+ * who answers at night, and how a fault is actually closed. Every line describes practice
+ * he already follows on the live platform; nothing here is aspirational.
+ */
+export const delivery: { title: string; lead: string; steps: { name: string; body: string }[] } = {
+	title: 'How I run delivery',
+	lead: 'The platform is not the whole job. Keeping more than twenty stores selling, and improving them without breaking a night shift, is the job.',
+	steps: [
+		{
+			name: 'Plan with the business',
+			body: 'Store teams and head office bring the problems. I turn them into a roadmap, agree what ships next, and say plainly what cannot be done without slowing everything else down.'
+		},
+		{
+			name: 'Build with review',
+			body: 'Every change passes code review before it ships. I review it and coach through it, so the developers grow into the work instead of being corrected after it.'
+		},
+		{
+			name: 'Release on a rhythm',
+			body: 'One to three releases a month reach every store. Rolling out to all of them together means no store is left running a version nobody else has.'
+		},
+		{
+			name: 'Answer when it breaks',
+			body: 'Incidents outside hours come to me, with an escalation path the support team follows, so a store is never waiting on someone who has gone to bed.'
+		},
+		{
+			name: 'Close the real cause',
+			body: 'When something fails I trace it to the source rather than patching the symptom, then train the people involved so the same fault does not return.'
+		}
+	]
+};
+
+/**
+ * Three decisions and what each one cost. This is the section that separates someone who
+ * ships code from someone who owns a system: every choice here had a real alternative, and
+ * naming the price is the part most portfolios leave out. All three are live on the
+ * platform he runs today.
+ */
+export const decisions: { title: string; lead: string; items: { name: string; problem: string; decision: string; cost: string }[] } = {
+	title: 'Three decisions, and what each one cost',
+	lead: 'Any architecture can be described as though it were obvious. These are the three choices that shaped the platform, with the price of each one written down.',
+	items: [
+		{
+			name: 'A database per store instead of one shared database',
+			problem: 'The chain kept opening branches, and a single shared database was on its way to becoming the bottleneck for every store at once.',
+			decision: 'Give each store its own database, and keep one central database for only the few things that must be chain wide: vouchers and customers.',
+			cost: 'More databases to provision and keep in step, and chain wide reporting that has to gather across them, in exchange for a chain that can keep opening stores without a rewrite.'
+		},
+		{
+			name: 'Checkout that keeps selling when the connection drops',
+			problem: 'A link goes down, and a supermarket till that stops working is a queue heading out of the door.',
+			decision: 'The store keeps selling against a local SQLite database seeded with the master data it needs, while a background scheduler pushes transactions and reconciles on reconnect.',
+			cost: 'Duplicates and conflicts had to be handled deliberately rather than assumed away, and the codebase carries a synchronisation path an always online design would never have needed.'
+		},
+		{
+			name: 'A gateway in front, routing by store',
+			problem: 'Every request had to reach the right store data, on a platform the business intended to keep extending.',
+			decision: 'Put a distribution gateway in front so requests are routed per store, and group stores behind dedicated API instances instead of one shared application server.',
+			cost: 'One more hop and one more thing to operate, in exchange for scaling store group by store group and a failure that stays inside its own group.'
+		}
+	]
+};
+
+/**
+ * The site as its own case study. A lead level reader is judging craft as much as
+ * employment history, and this page is evidence he can point at: hand written markup and
+ * SVG, motion that respects the system setting, no trackers. Every line here is checkable
+ * by looking at the site itself.
+ */
+export const built: { title: string; lead: string; items: { name: string; body: string }[] } = {
+	title: 'How this site is built',
+	lead: 'The page you are reading is part of the work. It is small on purpose, and the choices behind it are the same ones I would make on a platform someone has to maintain.',
+	items: [
+		{
+			name: 'Prerendered, not a single page app',
+			body: 'Every page is rendered to plain HTML at build time. What reaches a visitor is markup, styles and a little JavaScript, which is why it loads quickly on a phone on a shop floor connection.'
+		},
+		{
+			name: 'Hand written SVG, no charting library',
+			body: 'The architecture diagram and the module flow are drawn by hand and styled with the same variables as the rest of the page, so they follow the theme and the corner style without being told to.'
+		},
+		{
+			name: 'Motion that can be switched off',
+			body: 'The animation on the diagram is CSS inside a reduced motion query. A visitor who has asked their system for less movement gets the same information with none of the movement.'
+		},
+		{
+			name: 'Two controls, applied through variables',
+			body: 'Theme and corner style are set once on the document root and every surface reads them, rather than each component deciding for itself. That is why the diagram shapes change with the corner control.'
+		},
+		{
+			name: 'Nothing watching you',
+			body: 'No trackers, no analytics scripts, no cookie banner. The only file this site sends anywhere else is the CV, and only when someone asks for it.'
+		}
+	]
 };

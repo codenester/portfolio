@@ -55,10 +55,8 @@
 						<path d="M5 12h14M13 6l6 6-6 6" />
 					</svg>
 				</a>
-				<!-- The document sits in the hero on purpose: a hiring manager who gives the
-				     page fifteen seconds should not have to scroll to the contact block to
-				     find the CV. href and download are both set so the file saves rather than
-				     opening in a tab, which is the behaviour people expect from a download. -->
+				<!-- The document belongs here rather than only in the education block: a hiring
+				     manager who gives the page fifteen seconds should not have to scroll for it. -->
 				<a class="btn" href="/cv/Rithea-Sreng-CV.pdf" download>{ui.contact.cv}</a>
 				<a class="btn" href="#contact">{ui.hero.contactMe}</a>
 			</div>

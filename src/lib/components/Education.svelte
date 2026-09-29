@@ -29,14 +29,6 @@
 				<h2><Icon name="chat" size={17} />{ui.contact.title}</h2>
 				<p class="lead">{ui.contact.lead}</p>
 				<div class="cta-stack">
-					<a class="btn primary" href="/cv/Rithea-Sreng-CV.pdf" download>
-						<span class="doc pdf"><Icon name="pdf" size={20} /></span>
-						{ui.contact.cv}
-					</a>
-					<a class="btn" href="/cv/Rithea-Sreng-CV.docx" download>
-						<span class="doc word"><Icon name="word" size={20} /></span>
-						{ui.contact.cvDocx}
-					</a>
 				</div>
 			</div>
 
