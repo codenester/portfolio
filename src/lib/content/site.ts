@@ -492,23 +492,23 @@ export const delivery: { title: string; lead: string; steps: { name: string; bod
 	steps: [
 		{
 			name: 'Plan with the business',
-			body: 'Store teams and head office bring the problems. I turn them into a roadmap, agree what ships next, and say plainly what cannot be done without slowing everything else down.'
+			body: 'Store teams and head office bring the problems. I turn them into a roadmap, and say plainly what cannot be done without slowing the rest.'
 		},
 		{
 			name: 'Build with review',
-			body: 'Every change passes code review before it ships. I review it and coach through it, so the developers grow into the work instead of being corrected after it.'
+			body: 'Every change passes code review before it ships. I review it and coach through it, so developers grow into the work.'
 		},
 		{
 			name: 'Release on a rhythm',
-			body: 'One to three releases a month reach every store. Rolling out to all of them together means no store is left running a version nobody else has.'
+			body: 'One to three releases a month reach every store, all of them on the same version.'
 		},
 		{
 			name: 'Answer when it breaks',
-			body: 'Incidents outside hours come to me, with an escalation path the support team follows, so a store is never waiting on someone who has gone to bed.'
+			body: 'Incidents outside hours come to me, with an escalation path the support team follows.'
 		},
 		{
 			name: 'Close the real cause',
-			body: 'When something fails I trace it to the source rather than patching the symptom, then train the people involved so the same fault does not return.'
+			body: 'I trace a fault to its source rather than patching the symptom, then train the people involved.'
 		}
 	]
 };
@@ -525,21 +525,21 @@ export const decisions: { title: string; lead: string; items: { name: string; pr
 	items: [
 		{
 			name: 'A database per store instead of one shared database',
-			problem: 'The chain kept opening branches, and a single shared database was on its way to becoming the bottleneck for every store at once.',
-			decision: 'Give each store its own database, and keep one central database for only the few things that must be chain wide: vouchers and customers.',
-			cost: 'More databases to provision and keep in step, and chain wide reporting that has to gather across them, in exchange for a chain that can keep opening stores without a rewrite.'
+			problem: 'The chain kept opening branches, and one shared database was becoming the bottleneck for every store at once.',
+			decision: 'Each store got its own database. One central database holds only what has to be chain wide: vouchers and customers.',
+			cost: 'More databases to keep in step, and reporting that gathers across them. In exchange, the chain keeps opening stores without a rewrite.'
 		},
 		{
 			name: 'Checkout that keeps selling when the connection drops',
-			problem: 'A link goes down, and a supermarket till that stops working is a queue heading out of the door.',
-			decision: 'The store keeps selling against a local SQLite database seeded with the master data it needs, while a background scheduler pushes transactions and reconciles on reconnect.',
-			cost: 'Duplicates and conflicts had to be handled deliberately rather than assumed away, and the codebase carries a synchronisation path an always online design would never have needed.'
+			problem: 'A dropped link meant a till that stopped, and a queue heading out of the door.',
+			decision: 'The store sells against its own local SQLite database, while a scheduler pushes transactions and reconciles on reconnect.',
+			cost: 'Duplicates and conflicts had to be handled deliberately, and the code carries a synchronisation path an online only design would not need.'
 		},
 		{
 			name: 'A gateway in front, routing by store',
-			problem: 'Every request had to reach the right store data, on a platform the business intended to keep extending.',
-			decision: 'Put a distribution gateway in front so requests are routed per store, and group stores behind dedicated API instances instead of one shared application server.',
-			cost: 'One more hop and one more thing to operate, in exchange for scaling store group by store group and a failure that stays inside its own group.'
+			problem: 'Every request had to reach the right store data, on a platform meant to keep growing.',
+			decision: 'A gateway routes requests per store, and stores share dedicated API instances instead of one shared application server.',
+			cost: 'One more hop to operate. In exchange, scaling happens store group by store group and a failure stays inside its group.'
 		}
 	]
 };
@@ -556,23 +556,24 @@ export const built: { title: string; lead: string; items: { name: string; body: 
 	items: [
 		{
 			name: 'Prerendered, not a single page app',
-			body: 'Every page is rendered to plain HTML at build time. What reaches a visitor is markup, styles and a little JavaScript, which is why it loads quickly on a phone on a shop floor connection.'
+			body: 'Every page is rendered to plain HTML at build time, so what arrives is markup and a little JavaScript.'
 		},
 		{
 			name: 'Hand written SVG, no charting library',
-			body: 'The architecture diagram and the module flow are drawn by hand and styled with the same variables as the rest of the page, so they follow the theme and the corner style without being told to.'
+			body: 'The diagrams are hand written SVG, styled with the same variables as the page, so they follow its theme and corner style.'
 		},
 		{
 			name: 'Motion that can be switched off',
-			body: 'The animation on the diagram is CSS inside a reduced motion query. A visitor who has asked their system for less movement gets the same information with none of the movement.'
+			body: 'The animation sits inside a reduced motion query. Ask your system for less movement and the same information arrives still.'
 		},
 		{
 			name: 'Two controls, applied through variables',
-			body: 'Theme and corner style are set once on the document root and every surface reads them, rather than each component deciding for itself. That is why the diagram shapes change with the corner control.'
+			body: 'Theme and corner style are set once on the document root, which is why the diagrams change with the control.'
 		},
 		{
 			name: 'Nothing watching you',
-			body: 'No trackers, no analytics scripts, no cookie banner. The only file this site sends anywhere else is the CV, and only when someone asks for it.'
+			body: 'No trackers, no analytics, no cookie banner. The only file sent anywhere else is the CV, and only when it is asked for.'
 		}
 	]
 };
+

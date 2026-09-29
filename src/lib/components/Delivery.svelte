@@ -41,6 +41,15 @@
 		border-top: 1px solid var(--border);
 	}
 
+	/* two up on a wide screen: five full width rows of heading plus paragraph is the wall
+	   he pointed at. The numbering carries the order across the columns. */
+	@media (min-width: 900px) {
+		.steps {
+			grid-template-columns: 1fr 1fr;
+			column-gap: 34px;
+		}
+	}
+
 	/* A rule per step rather than cards: five cards would read as a feature grid, and
 	   this is a sequence, so the eye should be able to run straight down it. */
 	.steps li {
