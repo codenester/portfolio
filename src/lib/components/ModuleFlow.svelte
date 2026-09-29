@@ -214,10 +214,10 @@
 
 <button class="btn ghost flow-cta" type="button" onclick={show}>
 	<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-		<rect x="3" y="3" width="8" height="8" rx="1.5" />
-		<rect x="13" y="3" width="8" height="8" rx="1.5" />
-		<rect x="3" y="13" width="8" height="8" rx="1.5" />
-		<rect x="13" y="13" width="8" height="8" rx="1.5" />
+		<rect x="3" y="3" width="8" height="8" rx="1.5" class="icon-sq" />
+		<rect x="13" y="3" width="8" height="8" rx="1.5" class="icon-sq" />
+		<rect x="3" y="13" width="8" height="8" rx="1.5" class="icon-sq" />
+		<rect x="13" y="13" width="8" height="8" rx="1.5" class="icon-sq" />
 	</svg>
 	{cta}
 </button>
@@ -267,8 +267,8 @@
 					<text class="lbl alone" x={L.labels.x} y={L.labels.y} text-anchor="middle">split again: one module, still alive</text>
 
 					<!-- the small product, and the body it grows into -->
-					<rect class="frame small-frame" x={L.small.x} y={L.small.y} width={L.small.w} height={L.small.h} rx="14" />
-					<rect class="frame body" x={L.big.x} y={L.big.y} width={L.big.w} height={L.big.h} rx="16" />
+					<rect class="frame small-frame" x={L.small.x} y={L.small.y} width={L.small.w} height={L.small.h} rx="14"  style="--rs: var(--radius-surface); --rh: {L.small.h}px" />
+					<rect class="frame body" x={L.big.x} y={L.big.y} width={L.big.w} height={L.big.h} rx="16"  style="--rs: var(--radius-surface); --rh: {L.big.h}px" />
 
 					<!-- the pieces, drawn only while split -->
 					{#each L.bands as b, i (i)}
@@ -277,9 +277,9 @@
 							class:shrink={!!b.shrunk}
 							style={`--sx:${b.dx}px; --sy:${b.dy}px; --ctx:${b.shrunk ? b.shrunk.core.x : b.core.x}px; --cty:${b.shrunk ? b.shrunk.core.y : b.core.y}px; --ctx0:${b.core.x}px; --cty0:${b.core.y}px; --ppx:${(b.shrunk && b.shrunk.pulse ? b.shrunk.pulse.x : b.pulse.x) - b.pulse.x}px; --ppy:${(b.shrunk && b.shrunk.pulse ? b.shrunk.pulse.y : b.pulse.y) - b.pulse.y}px`}
 						>
-							<rect class="frame" x={b.frame.x} y={b.frame.y} width={b.frame.w} height={b.frame.h} rx="14" />
+							<rect class="frame" x={b.frame.x} y={b.frame.y} width={b.frame.w} height={b.frame.h} rx="14"  style="--rs: var(--radius-surface); --rh: {b.frame.h}px" />
 							{#if b.shrunk}
-								<rect class="frame shrunk" x={b.shrunk.frame.x} y={b.shrunk.frame.y} width={b.shrunk.frame.w} height={b.shrunk.frame.h} rx="14" />
+								<rect class="frame shrunk" x={b.shrunk.frame.x} y={b.shrunk.frame.y} width={b.shrunk.frame.w} height={b.shrunk.frame.h} rx="14"  style="--rs: var(--radius-surface); --rh: {b.shrunk.frame.h}px" />
 							{/if}
 							<g class="pulse-wrap">
 								<circle class="pulse" cx={b.pulse.x} cy={b.pulse.y} r="3.4" />
@@ -294,7 +294,7 @@
 
 					<!-- the single module that stands alone -->
 					<g class="solo-frame">
-						<rect class="frame" x={L.solo.frame.x} y={L.solo.frame.y} width={L.solo.frame.w} height={L.solo.frame.h} rx="12" />
+						<rect class="frame" x={L.solo.frame.x} y={L.solo.frame.y} width={L.solo.frame.w} height={L.solo.frame.h} rx="12"  style="--rs: var(--radius-surface); --rh: {L.solo.frame.h}px" />
 						<circle class="pulse" cx={L.solo.pulse.x} cy={L.solo.pulse.y} r="3.4" />
 						<g class="solo-core" transform={`translate(${L.solo.core.x}, ${L.solo.core.y})`}>
 							{#each core as c (c)}
@@ -322,7 +322,7 @@
 					</g>
 
 					<!-- the service bus every piece plugs into -->
-					<rect class="bus" x={L.bus.x} y={L.bus.y} width={L.bus.w} height={L.bus.h} rx={L.bus.h / 2} />
+					<rect class="bus" x={L.bus.x} y={L.bus.y} width={L.bus.w} height={L.bus.h} rx={L.bus.h / 2}  style="--rs: var(--radius-pill); --rh: {L.bus.h}px" />
 					<text class="bus-label" x={L.busLabel.x} y={L.busLabel.y}>service bus</text>
 
 					<!-- dependencies: pieces lean on the bus, and only on the three -->
@@ -355,6 +355,21 @@
 </dialog>
 
 <style>
+	/* SHAPES FOLLOW THE SWITCHER (his report, 29 Sep 2026): every rect in this diagram
+	   used a hard-coded rx, so the whole visual stayed rounded in rect and pill mode.
+	   They now read the same --radius-surface / --radius-control tokens the buttons and
+	   cards use, clamped to their own half height. The clamp is not optional: SVG does
+	   not auto-clamp rx the way CSS border-radius does, so a pill radius on a rect
+	   becomes a full ellipse, ry deriving from the unclamped rx — the same oval trap
+	   the hero diagram documents at length. --rh carries each element's height, and
+	   the default keeps every rect that does not declare one well inside its own box. */
+	rect:not(.icon-sq) {
+		--r: min(var(--rs, var(--radius-control)), calc(var(--rh, 18px) / 2));
+		rx: var(--r);
+		ry: var(--r);
+	}
+
+
 	.flow-cta {
 		margin-top: 18px;
 	}
